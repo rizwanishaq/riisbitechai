@@ -1,25 +1,36 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useRef } from "react";
+import Nav from "react-bootstrap/Nav";
+import { useQuery } from "react-query";
 import { useLocation } from "../../../hooks/useLocation";
 
 const Weather = () => {
   const { location } = useLocation();
-  console.log(location.weather.icon);
+  const createStopwatch = () => {
+    return () => {
+      return new Date();
+    };
+  };
+  const timerRef = useRef(createStopwatch());
+  const { data: time } = useQuery("time", timerRef.current, {
+    refetchInterval: 1000,
+  });
+
   return (
-    <li className="nav-item dropdown pe-3">
+    <Nav.Item className="pe-3">
+      <span className="badge bg-success">{time?.toLocaleTimeString()}</span>
       {location.temperature && location.weather && (
-        <Link
-          to="#"
-          className="nav-link nav-profile d-flex align-items-center pe-0"
+        <Nav.Link
+          href="#"
+          className="nav-profile d-flex align-items-center pe-0"
         >
           {location.city.length > 0 ? `${location.city} ` : ""}
           {location.weather ? <img src={location.weather.icon} alt="" /> : ""}
           <span className="d-none d-md-block dropdown-toggle ps-2">
             {Math.ceil(location.temperature.temp)}&deg;
           </span>
-        </Link>
+        </Nav.Link>
       )}
-    </li>
+    </Nav.Item>
   );
 };
 

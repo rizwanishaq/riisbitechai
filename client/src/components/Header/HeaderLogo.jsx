@@ -1,22 +1,26 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import Nav from "react-bootstrap/Nav";
 
 const HeaderLogo = () => {
   const [sidebar_toggle, setSidbar_Toggle] = useState(false);
+
+  useEffect(() => {
+    if (sidebar_toggle) {
+      document.body.classList.add("toggle-sidebar");
+    } else {
+      document.body.classList.remove("toggle-sidebar");
+    }
+  }, [sidebar_toggle]);
+
   return (
     <div className="d-flex align-items-center justify-content-between">
-      <Link to="/" className="logo d-flex align-items-center">
+      <Nav.Link href="/" className="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="" />
         <span className="d-none d-lg-block">RiisBiTech</span>
-      </Link>
+      </Nav.Link>
       <i
         className="bi bi-list toggle-sidebar-btn"
-        onClick={() => {
-          setSidbar_Toggle(!sidebar_toggle);
-          sidebar_toggle
-            ? document.body.classList.add("toggle-sidebar")
-            : document.body.classList.remove("toggle-sidebar");
-        }}
+        onClick={() => setSidbar_Toggle(!sidebar_toggle)}
       ></i>
     </div>
   );

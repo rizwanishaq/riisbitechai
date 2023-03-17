@@ -24,9 +24,9 @@ const MachineLearning = () => {
         data-bs-parent="#sidebar-nav"
       >
         <li>
-          <Link to="/components">
+          <Link to="/eventdetection">
             <i className="bi bi-circle"></i>
-            <span>Alerts</span>
+            <span>Event Detection</span>
           </Link>
         </li>
         <li>

@@ -5,8 +5,12 @@ import Error from "./pages/Error";
 import FAQ from "./pages/FAQ/FAQ";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import EventDetection from "./pages/MachineLearning/EventDetection/EventDetection";
 import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Register/Register";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +48,11 @@ const router = createBrowserRouter([
         element: <FAQ />,
         errorElement: <Error />,
       },
+      {
+        path: "eventdetection",
+        element: <EventDetection />,
+        errorElement: <Error />,
+      },
     ],
   },
 ]);
@@ -52,6 +61,7 @@ function App() {
   return (
     <div>
       <RouterProvider router={router} />
+      <ToastContainer />
     </div>
   );
 }

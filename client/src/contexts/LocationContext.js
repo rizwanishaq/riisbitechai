@@ -71,6 +71,7 @@ const LocationContextProvider = ({ children }) => {
     };
 
     getLocation();
+    // eslint-disable-next-line
   }, []);
 
   return (

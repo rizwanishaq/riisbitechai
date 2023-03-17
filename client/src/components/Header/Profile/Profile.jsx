@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useLocation } from "../../../hooks/useLocation";
 
 const Profile = () => {
   const [show_profile, setShow_Profile] = useState(false);
-  const { location } = useLocation();
   return (
     <li
       className="nav-item dropdown pe-3"
