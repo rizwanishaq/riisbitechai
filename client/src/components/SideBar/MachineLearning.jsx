@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 
 const MachineLearning = () => {
@@ -30,12 +30,13 @@ const MachineLearning = () => {
           </Link>
         </li>
         <li>
-          <Link to="/accordion">
+          <Link to="/stable_diffusion">
             <i className="bi bi-circle"></i>
-            <span>Accordion</span>
+            <span>StableDiffusion</span>
           </Link>
         </li>
-        <li>
+
+        {/* <li>
           <Link to="/badges">
             <i className="bi bi-circle"></i>
             <span>Badges</span>
@@ -64,7 +65,7 @@ const MachineLearning = () => {
             <i className="bi bi-circle"></i>
             <span>Carousel</span>
           </Link>
-        </li>
+        </li>  */}
       </ul>
     </>
   );

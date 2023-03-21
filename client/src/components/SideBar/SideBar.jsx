@@ -3,16 +3,17 @@ import Nav from "react-bootstrap/Nav";
 import Blogs from "./Blogs";
 import MachineLearning from "./MachineLearning";
 import MERN from "./MERN";
+import { NavLink } from "react-router-dom";
 
 const SideBar = () => {
   return (
     <aside id="sidebar" className="sidebar">
       <ul className="sidebar-nav" id="sidebar-nav">
         <Nav.Item>
-          <Nav.Link className="nav-link " href="/">
+          <NavLink className="nav-link " to="/">
             <i className="bi bi-grid"></i>
             <span>Dashboard</span>
-          </Nav.Link>
+          </NavLink>
         </Nav.Item>
 
         <Nav.Item>
@@ -28,38 +29,38 @@ const SideBar = () => {
         <li className="nav-heading">Pages</li>
 
         <Nav.Item>
-          <Nav.Link className="collapsed" href="/profile">
+          <NavLink className="collapsed" to="/profile">
             <i className="bi bi-person"></i>
             <span>Profile</span>
-          </Nav.Link>
+          </NavLink>
         </Nav.Item>
 
         <Nav.Item>
-          <Nav.Link className="nav-link collapsed" href="/faq">
+          <NavLink className="nav-link collapsed" to="/faq">
             <i className="bi bi-question-circle"></i>
             <span>F.A.Q</span>
-          </Nav.Link>
+          </NavLink>
         </Nav.Item>
 
         <Nav.Item>
-          <Nav.Link className="nav-link collapsed" href="/contact">
+          <NavLink className="nav-link collapsed" to="/contact">
             <i className="bi bi-envelope"></i>
             <span>Contact</span>
-          </Nav.Link>
+          </NavLink>
         </Nav.Item>
 
         <Nav.Item>
-          <Nav.Link className="nav-link collapsed" href="/register">
+          <NavLink className="nav-link collapsed" to="/register">
             <i className="bi bi-card-list"></i>
             <span>Register</span>
-          </Nav.Link>
+          </NavLink>
         </Nav.Item>
 
         <Nav.Item>
-          <Nav.Link className="nav-link collapsed" href="login">
+          <NavLink className="nav-link collapsed" to="login">
             <i className="bi bi-box-arrow-in-right"></i>
             <span>Login</span>
-          </Nav.Link>
+          </NavLink>
         </Nav.Item>
       </ul>
     </aside>

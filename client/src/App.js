@@ -11,6 +11,7 @@ import Register from "./pages/Register/Register";
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
+import TextToImage from "./pages/MachineLearning/HuggingFace/TextToImage";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
       {
         path: "eventdetection",
         element: <EventDetection />,
+        errorElement: <Error />,
+      },
+      {
+        path: "stable_diffusion",
+        element: <TextToImage />,
         errorElement: <Error />,
       },
     ],

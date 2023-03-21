@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Nav from "react-bootstrap/Nav";
+import { NavLink } from "react-router-dom";
 
 const HeaderLogo = () => {
   const [sidebar_toggle, setSidbar_Toggle] = useState(false);
@@ -14,10 +14,10 @@ const HeaderLogo = () => {
 
   return (
     <div className="d-flex align-items-center justify-content-between">
-      <Nav.Link href="/" className="logo d-flex align-items-center">
+      <NavLink to="/" className="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="" />
         <span className="d-none d-lg-block">RiisBiTech</span>
-      </Nav.Link>
+      </NavLink>
       <i
         className="bi bi-list toggle-sidebar-btn"
         onClick={() => setSidbar_Toggle(!sidebar_toggle)}

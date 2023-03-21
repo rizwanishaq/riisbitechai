@@ -1,0 +1,61 @@
+# My Variables
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWU4ZDk1N2YyMDBhYTcyNjUyMWU0YzI1In0sImlhdCI6MTU4NjMzODcxNywiZXhwIjoxNTg2Njk4NzE3fQ.ChR446yYuA-D-w6cdYDDkH4WV65kYUNYHBoWg_7TIJ0
+### Get request (auth)
+GET http://localhost:5000/api/me
+HEAD 
+"Bearer Token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjI2ZDkwNGJiOTMxYWZmMmNmNDVmYyIsImlhdCI6MTY0MzI4MDMwMSwiZXhwIjoxNjQ1ODcyMzAxfQ.OFDxE9VAyK0nbdLNGt05zMC7iyWcWhs5D_l3-RxK0Ck"
+
+### Get contact
+GET http://localhost:5000/api/goals/
+
+### Post Request
+GET http://localhost:5000/api/auth
+
+### Register User
+POST http://localhost:5000/api/machinelearning/stable_diffusion
+Content-Type: application/json
+
+{
+   "prompt": "award winning high resolution photo of a giant tortoise/((ladybird)) hybrid, [trending on artstation]"
+}
+
+### Register User
+PUT http://localhost:5000/api/goals/62063ee794a8a3ed45e92aa4
+Content-Type: application/json
+
+{
+   "text": "updated goal"
+}
+
+
+### loginuser
+POST http://localhost:5000/api/users/login
+Content-Type: application/json
+
+{
+   "email": "whatever@gmail.com",
+   "password": "1234567"
+}
+
+
+### loginuser
+POST http://localhost:5000/api/users/login
+Content-Type: application/json
+
+{
+   "email": "whatever1@gmail.com",
+   "password": "1234567"
+}
+
+
+### Login User
+POST http://localhost:5000/api/auth
+Content-Type: application/json
+
+{
+   "email": "whatever@gmail.com",
+   "password": "1234567"
+}
+
+### Delete
+Delete http://localhost:5000/api/goals/62063ed294a8a3ed45e92aa2

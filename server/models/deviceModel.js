@@ -1,8 +1,17 @@
 const mongoose = require("mongoose");
 
-const deviceSchema = mongoose.Schema({
-  deviceUid: {
-    type: String,
-    require: [true, "Please add a user deviceUid"],
+const deviceSchema = mongoose.Schema(
+  {
+    device_uid: {
+      type: String,
+    },
+    count: {
+      type: Number,
+    },
   },
-});
+  {
+    timestamps: true,
+  }
+);
+
+module.exports = mongoose.model("Device", deviceSchema);
