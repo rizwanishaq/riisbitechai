@@ -3,11 +3,12 @@ import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import Spinner from "react-bootstrap/Spinner";
 import * as tf from "@tensorflow/tfjs";
-import Button from "react-bootstrap/Button";
 import { FaMicrophoneAlt, FaMicrophoneSlash } from "react-icons/fa";
 import ProcessAudio from "./ProcessAudio";
+import UseAnimations from "react-useanimations";
+import alertCircle from "react-useanimations/lib/alertCircle";
+import loading2 from "react-useanimations/lib/loading2";
 
 const EventDetection = () => {
   //   Constant for APP
@@ -75,16 +76,13 @@ const EventDetection = () => {
                 <Card.Title>
                   {!model ? (
                     <>
-                      <Button variant="primary" disabled>
-                        <Spinner
-                          as="span"
-                          animation="grow"
-                          size="sm"
-                          role="status"
-                          aria-hidden="true"
-                        />
-                        Loading model ...
-                      </Button>
+                      <UseAnimations
+                        animation={loading2}
+                        size={56}
+                        wrapperStyle={{ marginTop: "5px" }}
+                        onClick={() => console.log("something")}
+                      />
+                      Loading model ...
                     </>
                   ) : (
                     <>
@@ -96,9 +94,16 @@ const EventDetection = () => {
                               setStart(false);
                             }}
                           />
+                          <UseAnimations
+                            animation={alertCircle}
+                            size={56}
+                            wrapperStyle={{ marginTop: "5px" }}
+                          />
                         </>
                       ) : (
-                        <FaMicrophoneAlt onClick={() => setStart(true)} />
+                        <>
+                          <FaMicrophoneAlt onClick={() => setStart(true)} />
+                        </>
                       )}
                     </>
                   )}
