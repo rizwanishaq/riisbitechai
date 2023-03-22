@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Form, Button, Row, Col, Card, Nav } from "react-bootstrap";
+import { Form, Button, Row, Col, Card, Nav, InputGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-
+import { toast } from "react-toastify";
 import axios from "axios";
 
 const TextToImage = () => {
@@ -25,14 +25,12 @@ const TextToImage = () => {
           },
         }
       );
-      console.log(response.data);
-      const blob = new Blob([response.data], { type: "image/jpeg" });
-      const imageUrl = URL.createObjectURL(blob);
+      const base64_image = response.data.image_base64;
+      const imageUrl = `data:image/jpg;base64,${base64_image}`;
       setImage(imageUrl);
-
       setProcessing(false);
     } catch (error) {
-      console.log(error);
+      toast.error("Unable to generate image (limit/error)");
       setProcessing(false);
     }
 
@@ -41,7 +39,7 @@ const TextToImage = () => {
   return (
     <main id="main" className="main">
       <div className="pagetitle">
-        <h1>Event Detection</h1>
+        <h1>Stable Diffusion HuggingFace</h1>
         <Nav>
           <li className="breadcrumb-item"></li>
         </Nav>
@@ -51,29 +49,24 @@ const TextToImage = () => {
         <Row>
           <Col lg={6}>
             <Card className="basic">
+              <Card.Img
+                variant="top"
+                src={processing ? "i/processing.gif" : image}
+              />
               <Card.Body>
-                <Form onSubmit={handleSubmit(onSubmit)}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>
-                      Write some prompt to generate the image
-                    </Form.Label>
+                <Form
+                  className="search-form d-flex align-items-center mt-3"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
+                  <InputGroup className="mb-3">
                     <Form.Control
                       type="text"
                       {...register("prompt", { required: true })}
-                      placeholder="Enter a text ...."
+                      placeholder="Write some prompt to generate the image ...."
                     />
-                  </Form.Group>
-
-                  <Button variant="dark" type="submit">
-                    Generate
-                  </Button>
+                    <Button type="submit">Generate Image</Button>
+                  </InputGroup>
                 </Form>
-
-                <image
-                  src={processing ? "i/processing.gif" : image}
-                  responsive="true"
-                  className="mt-3 mb-50 mb-lg-0 img-fluid radius10"
-                />
               </Card.Body>
             </Card>
           </Col>

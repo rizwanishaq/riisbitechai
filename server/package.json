@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@huggingface/inference": "^1.6.0",
+    "aws-sdk": "^2.1340.0",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -18,7 +19,8 @@
     "express-async-handler": "^1.2.0",
     "helmet": "^6.0.1",
     "mongoose": "^7.0.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.21"
