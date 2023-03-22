@@ -1,13 +1,38 @@
-import React, { useState } from "react";
-import { Form, Button, Row, Col, Card, Nav, InputGroup } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import {
+  Form,
+  Button,
+  Row,
+  Col,
+  Card,
+  Nav,
+  InputGroup,
+  Image,
+} from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useDevice } from "../../../hooks/useDevice";
+import Carousel from "react-bootstrap/Carousel";
 
 const TextToImage = () => {
+  // Just to show the device-id
+  const { device_info } = useDevice();
+
   const [image, setImage] = useState("");
   const [processing, setProcessing] = useState(false);
   const { register, handleSubmit, reset } = useForm();
+  const [prompt_image_pairs, setPrompt_Image_Pairs] = useState([]);
+
+  useEffect(() => {
+    const get_prompt_image_pairs = async () => {
+      const response = await axios.get(
+        "http://localhost:5000/api/machinelearning/stable_diffusion"
+      );
+      setPrompt_Image_Pairs(response.data.prompt_image_pairs);
+    };
+    get_prompt_image_pairs();
+  }, [image]);
 
   const onSubmit = async (data) => {
     setImage("");
@@ -18,6 +43,7 @@ const TextToImage = () => {
         "http://localhost:5000/api/machinelearning/stable_diffusion",
         {
           prompt: `${data.prompt}`,
+          device_uid: device_info.device_uid,
         },
         {
           headers: {
@@ -69,6 +95,18 @@ const TextToImage = () => {
                 </Form>
               </Card.Body>
             </Card>
+          </Col>
+          <Col lg={6}>
+            <Carousel>
+              {prompt_image_pairs.map((item) => (
+                <Carousel.Item key={`${item._id}`}>
+                  <Card>
+                    <Card.Img variant="top" src={item.image_url} />
+                    <Card.Footer>{item.prompt}</Card.Footer>
+                  </Card>
+                </Carousel.Item>
+              ))}
+            </Carousel>
           </Col>
         </Row>
       </section>

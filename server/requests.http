@@ -9,7 +9,7 @@ HEAD
 GET http://localhost:5000/api/goals/
 
 ### Post Request
-GET http://localhost:5000/api/auth
+GET http://localhost:5000/api/machinelearning/stable_diffusion
 
 ### Register User
 POST http://localhost:5000/api/machinelearning/stable_diffusion

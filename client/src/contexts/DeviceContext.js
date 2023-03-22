@@ -59,7 +59,7 @@ const DeviceContextProvider = ({ children }) => {
   }, [device_info]);
 
   return (
-    <DeviceContext.Provider value={{ visits }}>
+    <DeviceContext.Provider value={{ visits, device_info }}>
       {children}
     </DeviceContext.Provider>
   );
