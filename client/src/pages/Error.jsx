@@ -16,7 +16,7 @@ const Error = () => {
             <HiArrowCircleLeft width={20} />
             <span>Go Back</span>
           </button>
-          <Link>
+          <Link to="/">
             <HiOutlineHome width={20} />
             <span>Go home</span>
           </Link>

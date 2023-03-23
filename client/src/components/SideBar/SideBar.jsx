@@ -26,10 +26,10 @@ const SideBar = () => {
           <Blogs />
         </Nav.Item>
 
-        <li className="nav-heading">Pages</li>
+        {/* <li className="nav-heading">Pages</li> */}
 
-        <Nav.Item>
-          <NavLink className="collapsed" to="/profile">
+        {/* <Nav.Item>
+          <NavLink className="nav-link collapsed" to="/profile">
             <i className="bi bi-person"></i>
             <span>Profile</span>
           </NavLink>
@@ -61,7 +61,7 @@ const SideBar = () => {
             <i className="bi bi-box-arrow-in-right"></i>
             <span>Login</span>
           </NavLink>
-        </Nav.Item>
+        </Nav.Item> */}
       </ul>
     </aside>
   );

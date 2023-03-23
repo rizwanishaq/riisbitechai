@@ -21,7 +21,7 @@ const MERN = () => {
         className={`nav-content collapse ${show ? "show" : ""}`}
         data-bs-parent="#sidebar-nav"
       >
-        <li>
+        {/* <li>
           <Link to="forms-elements.html">
             <i className="bi bi-circle"></i>
             <span>Form Elements</span>
@@ -44,7 +44,7 @@ const MERN = () => {
             <i className="bi bi-circle"></i>
             <span>Form Validation</span>
           </Link>
-        </li>
+        </li> */}
       </ul>
     </>
   );

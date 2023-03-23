@@ -21,7 +21,7 @@ const Blogs = () => {
         className={`nav-content collapse ${show ? "show" : ""}`}
         data-bs-parent="#sidebar-nav"
       >
-        <li>
+        {/* <li>
           <Link to="tables-general.html">
             <i className="bi bi-circle"></i>
             <span>General Tables</span>
@@ -32,7 +32,7 @@ const Blogs = () => {
             <i className="bi bi-circle"></i>
             <span>Data Tables</span>
           </Link>
-        </li>
+        </li> */}
       </ul>
     </>
   );

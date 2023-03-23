@@ -35,13 +35,14 @@ const MachineLearning = () => {
             <span>StableDiffusion</span>
           </Link>
         </li>
-
-        {/* <li>
-          <Link to="/badges">
+        <li>
+          <Link to="/chatgpt">
             <i className="bi bi-circle"></i>
-            <span>Badges</span>
+            <span>ChatGPT Demo</span>
           </Link>
         </li>
+
+        {/* 
         <li>
           <Link to="/breadcrumbs">
             <i className="bi bi-circle"></i>

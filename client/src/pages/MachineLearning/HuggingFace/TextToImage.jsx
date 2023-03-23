@@ -27,7 +27,7 @@ const TextToImage = () => {
   useEffect(() => {
     const get_prompt_image_pairs = async () => {
       const response = await axios.get(
-        "http://localhost:5000/api/machinelearning/stable_diffusion"
+        "https://riisbitec.onrender.com/api/machinelearning/stable_diffusion"
       );
       setPrompt_Image_Pairs(response.data.prompt_image_pairs);
     };
@@ -40,7 +40,7 @@ const TextToImage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/machinelearning/stable_diffusion",
+        "https://riisbitec.onrender.com/api/machinelearning/stable_diffusion",
         {
           prompt: `${data.prompt}`,
           device_uid: device_info.device_uid,
@@ -97,7 +97,7 @@ const TextToImage = () => {
             </Card>
           </Col>
           <Col lg={6}>
-            <Carousel>
+            <Carousel fade>
               {prompt_image_pairs.map((item) => (
                 <Carousel.Item key={`${item._id}`}>
                   <Card>

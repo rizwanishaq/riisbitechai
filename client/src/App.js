@@ -12,6 +12,7 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import TextToImage from "./pages/MachineLearning/HuggingFace/TextToImage";
+import ChatGPT from "./pages/MachineLearning/ChatGPT/ChatGPT";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
       {
         path: "stable_diffusion",
         element: <TextToImage />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/chatgpt",
+        element: <ChatGPT />,
         errorElement: <Error />,
       },
     ],
