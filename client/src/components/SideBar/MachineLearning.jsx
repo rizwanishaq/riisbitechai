@@ -36,19 +36,20 @@ const MachineLearning = () => {
           </Link>
         </li>
         <li>
-          <Link to="/chatgpt">
+          {/* <Link to="/chatgpt">
             <i className="bi bi-circle"></i>
             <span>ChatGPT Demo</span>
+          </Link> */}
+        </li>
+        <li>
+          <Link to="/keywordextractor">
+            <i className="bi bi-circle"></i>
+            <span>Keyword Extractor</span>
           </Link>
         </li>
 
         {/* 
-        <li>
-          <Link to="/breadcrumbs">
-            <i className="bi bi-circle"></i>
-            <span>Breadcrumbs</span>
-          </Link>
-        </li>
+        
         <li>
           <Link to="/buttons">
             <i className="bi bi-circle"></i>

@@ -7,17 +7,20 @@ import App from "./App";
 import { QueryClient, QueryClientProvider } from "react-query";
 import LocationContextProvider from "./contexts/LocationContext";
 import DeviceContextProvider from "./contexts/DeviceContext";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <DeviceContextProvider>
-        <LocationContextProvider>
-          <App />
-        </LocationContextProvider>
-      </DeviceContextProvider>
-    </QueryClientProvider>
+    <ChakraProvider>
+      <QueryClientProvider client={queryClient}>
+        <DeviceContextProvider>
+          <LocationContextProvider>
+            <App />
+          </LocationContextProvider>
+        </DeviceContextProvider>
+      </QueryClientProvider>
+    </ChakraProvider>
   </React.StrictMode>
 );

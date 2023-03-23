@@ -6,7 +6,7 @@ HEAD
 "Bearer Token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjI2ZDkwNGJiOTMxYWZmMmNmNDVmYyIsImlhdCI6MTY0MzI4MDMwMSwiZXhwIjoxNjQ1ODcyMzAxfQ.OFDxE9VAyK0nbdLNGt05zMC7iyWcWhs5D_l3-RxK0Ck"
 
 ### Get contact
-GET http://localhost:5000/api/goals/
+GET http://localhost:5000/api/news
 
 ### Post Request
 GET http://localhost:5000/api/machinelearning/stable_diffusion
@@ -18,6 +18,15 @@ Content-Type: application/json
 {
    "prompt": "award winning high resolution photo of a giant tortoise/((ladybird)) hybrid, [trending on artstation]"
 }
+
+### Register User
+POST http://localhost:5000/api/machinelearning//keywordextractor
+Content-Type: application/json
+
+{
+   "text": "award winning high resolution photo of a giant tortoise/((ladybird)) hybrid, [trending on artstation]"
+}
+
 
 ### Register User
 PUT http://localhost:5000/api/goals/62063ee794a8a3ed45e92aa4

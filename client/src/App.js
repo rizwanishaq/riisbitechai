@@ -13,6 +13,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TextToImage from "./pages/MachineLearning/HuggingFace/TextToImage";
 import ChatGPT from "./pages/MachineLearning/ChatGPT/ChatGPT";
+import KeywordExtractor from "./pages/MachineLearning/KeywordExtractor/KeywordExtractor";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,11 @@ const router = createBrowserRouter([
       {
         path: "/chatgpt",
         element: <ChatGPT />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/keywordextractor",
+        element: <KeywordExtractor />,
         errorElement: <Error />,
       },
     ],

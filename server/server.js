@@ -22,6 +22,7 @@ app.use(errorHandler);
 // Routes
 app.use("/api/device", require("./routes/deviceRoutes"));
 app.use("/api/machinelearning", require("./routes/machinelearningRoutes"));
+app.use("/api/news", require("./routes/newsRoutes"));
 
 // Server started to listen
 app.listen(port, () => {

@@ -45,7 +45,45 @@ const get_pairs = asyncHandler(async (req, res) => {
   });
 });
 
+const getKeyWords = asyncHandler(async (req, res) => {
+  const { text } = req.body;
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.OPENAI_KEY}`,
+    },
+    body: JSON.stringify({
+      model: "text-davinci-003",
+      prompt:
+        "Extract keywords from this text. Make the first letter of each word uppercase and separate with commas \n\n" +
+        text +
+        "",
+      temperature: 0.5,
+      max_tokens: 60,
+      top_p: 1.0,
+      frequency_penalty: 0.8,
+      presence_penalty: 0.0,
+    }),
+  };
+
+  const response = await fetch(
+    "https://api.openai.com/v1/completions",
+    options
+  );
+
+  const json = await response.json();
+
+  const data = json.choices[0].text.trim();
+
+  res.status(200).json({
+    keywords: data,
+  });
+});
+
 module.exports = {
   get_pairs,
   stableDiffusion,
+  getKeyWords,
 };
