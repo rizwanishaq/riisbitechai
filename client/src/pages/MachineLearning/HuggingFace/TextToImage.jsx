@@ -40,7 +40,7 @@ const TextToImage = () => {
 
     try {
       const response = await axios.post(
-        "https://riisbitec.onrender.com:5000/api/machinelearning/stable_diffusion",
+        "http://localhost:5000/api/machinelearning/stable_diffusion",
         {
           prompt: `${data.prompt}`,
           device_uid: device_info.device_uid,

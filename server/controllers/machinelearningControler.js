@@ -2,8 +2,6 @@ const asyncHandler = require("express-async-handler");
 const { HfInference } = require("@huggingface/inference");
 const uploadFile = require("./../amazon-s3/s3Upload");
 const promptImage = require("../models/stableDiffusionModel");
-const fetch = require("node-fetch");
-globalThis.fetch = fetch;
 
 const hf = new HfInference(process.env.HUGGING_FACE_API);
 

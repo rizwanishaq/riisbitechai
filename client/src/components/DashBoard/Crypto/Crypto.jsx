@@ -96,15 +96,9 @@ const Crypto = () => {
             {searchResults.slice(range.start, range.end).map((coin) => (
               <tr key={coin.name}>
                 <th scope="row">
-                  <a href="#">
-                    <img src={coin.image} alt="" />
-                  </a>
+                  <img src={coin.image} alt="" />
                 </th>
-                <td>
-                  <a href="#" className="text-primary fw-bold">
-                    {coin.name}
-                  </a>
-                </td>
+                <td className="text-primary fw-bold">{coin.name}</td>
                 <td>${coin.current_price}</td>
                 <td className="fw-bold">{coin.market_cap}</td>
                 <td>{coin.market_cap_rank}</td>
