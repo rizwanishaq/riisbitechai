@@ -20,7 +20,7 @@ Content-Type: application/json
 }
 
 ### Register User
-POST http://localhost:5000/api/machinelearning//keywordextractor
+POST https://riisbitec.onrender.com:5000/api/machinelearning//keywordextractor
 Content-Type: application/json
 
 {

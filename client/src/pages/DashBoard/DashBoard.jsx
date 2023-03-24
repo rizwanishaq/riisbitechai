@@ -6,6 +6,9 @@ import Crypto from "../../components/DashBoard/Crypto/Crypto";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
+import Badge from "react-bootstrap/Badge";
+import Button from "react-bootstrap/Button";
 
 const DashBoard = () => {
   const { visits } = useDevice();
@@ -14,15 +17,20 @@ const DashBoard = () => {
     <>
       <main id="main" className="main">
         <div className="pagetitle">
-          <h1>Dashboard</h1>
-          <nav>
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <a href="index.html">Home</a>
-              </li>
-              <li className="breadcrumb-item active">Dashboard</li>
-            </ol>
-          </nav>
+          <h1>
+            Dashboard
+            <Button className="position-relative" variant="light" disabled>
+              <MdVisibility />
+              <Badge
+                pill
+                bg="light"
+                text="dark"
+                className="position-absolute top-0 start-100 translate-middle"
+              >
+                {visits}
+              </Badge>
+            </Button>
+          </h1>
         </div>
 
         <section className="section dashboard">
@@ -31,24 +39,6 @@ const DashBoard = () => {
               <div className="col-12">
                 <Crypto />
               </div>
-              <Row>
-                <Col xxl={4} md={6} className="col-xxl-4 col-md-6">
-                  <Card className="info-card sales-card">
-                    <Card.Body>
-                      <Card.Title>Visits</Card.Title>
-
-                      <div className="d-flex align-items-center">
-                        <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                          <MdVisibility />
-                        </div>
-                        <div className="ps-3">
-                          <h6>{visits}</h6>
-                        </div>
-                      </div>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
             </Col>
 
             <Col lg={4}>
