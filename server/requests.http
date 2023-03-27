@@ -12,15 +12,15 @@ GET http://localhost:5000/api/news
 GET http://localhost:5000/api/machinelearning/stable_diffusion
 
 ### Register User
-POST https://riisbitec.onrender.com/api/machinelearning/stable_diffusion
+POST http://localhost:5000/api/machinelearning/stable_diffusion
 Content-Type: application/json
 
 {
-   "prompt": "award winning high resolution photo of a giant tortoise/((ladybird)) hybrid, [trending on artstation]"
+   "prompt": "Generate 3d model for the human face with mask"
 }
 
 ### Register User
-POST https://riisbitec.onrender.com/api/machinelearning//keywordextractor
+POST http://localhost:5000/api/machinelearning//keywordextractor
 Content-Type: application/json
 
 {

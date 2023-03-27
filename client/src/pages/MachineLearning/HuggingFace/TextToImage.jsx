@@ -1,14 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Form,
-  Button,
-  Row,
-  Col,
-  Card,
-  Nav,
-  InputGroup,
-  Image,
-} from "react-bootstrap";
+import { Form, Button, Row, Col, Card, Nav, InputGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -51,11 +42,11 @@ const TextToImage = () => {
           },
         }
       );
-      // const base64_image = response.data.image_base64;
-      // const imageUrl = `data:image/jpg;base64,${base64_image}`;
-      // setImage(imageUrl);
-      console.log(response.data.image_url);
-      setImage(response.data.image_url);
+      const base64_image = response.data.image_base64;
+      const imageUrl = `data:image/jpg;base64,${base64_image}`;
+      setImage(imageUrl);
+      // console.log(response.data.image_url);
+      // setImage(response.data.image_url);
 
       setProcessing(false);
     } catch (error) {

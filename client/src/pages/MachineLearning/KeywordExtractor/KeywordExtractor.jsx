@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Nav from "react-bootstrap/Nav";
-import { Container, Box, Heading, Image, Text } from "@chakra-ui/react";
+import { Container, Box } from "@chakra-ui/react";
 import Header from "../../../components/KeyWordExtractor/Header";
 import Footer from "../../../components/KeyWordExtractor/Footer";
 import TextInput from "../../../components/KeyWordExtractor/TextInput";
