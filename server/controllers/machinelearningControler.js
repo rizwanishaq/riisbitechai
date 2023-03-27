@@ -22,8 +22,6 @@ export const stableDiffusion = asyncHandler(async (req, res) => {
 
   const image_url = await uploadFile(Buffer.from(arrayBuffer, "base64"));
 
-  console.log(image_url);
-
   await promptImage.create({
     device_uid: device_uid,
     prompt: prompt,
@@ -31,7 +29,8 @@ export const stableDiffusion = asyncHandler(async (req, res) => {
   });
 
   res.status(200).json({
-    image_base64: base64Data,
+    // image_base64: base64Data,
+    image_url: image_url,
   });
 });
 

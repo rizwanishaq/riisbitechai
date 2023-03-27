@@ -51,9 +51,12 @@ const TextToImage = () => {
           },
         }
       );
-      const base64_image = response.data.image_base64;
-      const imageUrl = `data:image/jpg;base64,${base64_image}`;
-      setImage(imageUrl);
+      // const base64_image = response.data.image_base64;
+      // const imageUrl = `data:image/jpg;base64,${base64_image}`;
+      // setImage(imageUrl);
+      console.log(response.data.image_url);
+      setImage(response.data.image_url);
+
       setProcessing(false);
     } catch (error) {
       toast.error("Unable to generate image (limit/error)");

@@ -12,7 +12,7 @@ import { errorHandler } from "./middleware/errorMiddleware.js";
 import connectDB from "./config/db.js";
 import DeviceRoutes from "./routes/deviceRoutes.js";
 import MachinelearningRoutes from "./routes/machinelearningRoutes.js";
-// import NewsRoutes from "./routes/newsRoutes.js";
+import NewsRoutes from "./routes/newsRoutes.js";
 
 // Connecting database
 connectDB();
@@ -29,7 +29,7 @@ app.use(errorHandler);
 // Routes
 app.use("/api/device", DeviceRoutes);
 app.use("/api/machinelearning", MachinelearningRoutes);
-// app.use("/api/news", NewsRoutes);
+app.use("/api/news", NewsRoutes);
 
 // Server started to listen
 app.listen(port, () => {
