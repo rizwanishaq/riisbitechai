@@ -1,8 +1,8 @@
-const express = require("express");
-const router = express.Router();
+import express from "express";
+import { setDevice } from "../controllers/deviceControler.js";
 
-const { setDevice } = require("../controllers/deviceControler");
+const router = express.Router();
 
 router.post("/", setDevice);
 
-module.exports = router;
+export default router;

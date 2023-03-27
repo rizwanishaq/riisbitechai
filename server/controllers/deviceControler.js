@@ -1,10 +1,10 @@
-const asyncHandler = require("express-async-handler");
-const Device = require("../models/deviceModel");
+import asyncHandler from "express-async-handler";
+import Device from "../models/deviceModel.js";
 
 // @desc    setDevice Information
 // @route   GET /api/goals
 // @access  Public
-const setDevice = asyncHandler(async (req, res) => {
+export const setDevice = asyncHandler(async (req, res) => {
   const { device_info } = req.body;
 
   const device_uid = device_info.device_uid;
@@ -31,7 +31,3 @@ const setDevice = asyncHandler(async (req, res) => {
     res.status(500).json("something wrong");
   }
 });
-
-module.exports = {
-  setDevice,
-};

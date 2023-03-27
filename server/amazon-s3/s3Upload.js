@@ -1,7 +1,7 @@
-const fs = require("fs");
-const path = require("path");
-const AWS = require("aws-sdk");
-const { v4: uuidv4 } = require("uuid");
+import AWS from "aws-sdk";
+import { v4 as uuidv4 } from "uuid";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.ACCESS_KEY_ID,
@@ -20,6 +20,7 @@ const uploadFile = (base64Data) => {
     };
     s3.upload(params, (s3Err, info) => {
       if (s3Err) {
+        // console.log(s3Err);
         return reject(s3Err);
       }
       return resolve(info.Location);
@@ -27,4 +28,4 @@ const uploadFile = (base64Data) => {
   });
 };
 
-module.exports = uploadFile;
+export default uploadFile;

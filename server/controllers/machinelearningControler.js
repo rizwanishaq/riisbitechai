@@ -1,14 +1,14 @@
-const asyncHandler = require("express-async-handler");
-const { HfInference } = require("@huggingface/inference");
-const uploadFile = require("./../amazon-s3/s3Upload");
-const promptImage = require("../models/stableDiffusionModel");
+import asyncHandler from "express-async-handler";
+import { HfInference } from "@huggingface/inference";
+import uploadFile from "./../amazon-s3/s3Upload.js";
+import promptImage from "../models/stableDiffusionModel.js";
 
 const hf = new HfInference(process.env.HUGGING_FACE_API);
 
 // @desc    setDevice Information
 // @route   POST /api/machinelearning/stable_diffusion
 // @access  Public
-const stableDiffusion = asyncHandler(async (req, res) => {
+export const stableDiffusion = asyncHandler(async (req, res) => {
   const { prompt, device_uid } = req.body;
 
   const image_blob = await hf.textToImage({
@@ -21,6 +21,8 @@ const stableDiffusion = asyncHandler(async (req, res) => {
   const base64Data = Buffer.from(arrayBuffer).toString("base64");
 
   const image_url = await uploadFile(Buffer.from(arrayBuffer, "base64"));
+
+  console.log(image_url);
 
   await promptImage.create({
     device_uid: device_uid,
@@ -36,7 +38,7 @@ const stableDiffusion = asyncHandler(async (req, res) => {
 // @desc    setDevice Information
 // @route   GET /api/machinelearning/stable_diffusion
 // @access  Public
-const get_pairs = asyncHandler(async (req, res) => {
+export const get_pairs = asyncHandler(async (req, res) => {
   const prompt_image_pairs = await promptImage.find({});
   console.log(prompt_image_pairs);
 
@@ -45,7 +47,7 @@ const get_pairs = asyncHandler(async (req, res) => {
   });
 });
 
-const getKeyWords = asyncHandler(async (req, res) => {
+export const getKeyWords = asyncHandler(async (req, res) => {
   const { text } = req.body;
 
   const options = {
@@ -82,8 +84,4 @@ const getKeyWords = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = {
-  get_pairs,
-  stableDiffusion,
-  getKeyWords,
-};
+export default "";

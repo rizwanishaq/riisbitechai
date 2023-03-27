@@ -1,14 +1,14 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const {
+import {
   stableDiffusion,
   get_pairs,
   getKeyWords,
-} = require("../controllers/machinelearningControler");
+} from "../controllers/machinelearningControler.js";
 
 router.post("/stable_diffusion", stableDiffusion);
 router.get("/stable_diffusion", get_pairs);
 router.post("/keywordextractor", getKeyWords);
 
-module.exports = router;
+export default router;

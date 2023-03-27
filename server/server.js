@@ -1,11 +1,18 @@
-const express = require("express");
-const morgan = require("morgan");
-const helmet = require("helmet");
-const dotenv = require("dotenv").config();
-const cors = require("cors");
-const colors = require("colors");
-const { errorHandler } = require("./middleware/errorMiddleware");
-const connectDB = require("./config/db");
+import express from "express";
+import morgan from "morgan";
+import helmet from "helmet";
+import * as dotenv from "dotenv";
+import cors from "cors";
+import colors from "colors";
+dotenv.config();
+import fetch from "node-fetch";
+globalThis.fetch = fetch;
+
+import { errorHandler } from "./middleware/errorMiddleware.js";
+import connectDB from "./config/db.js";
+import DeviceRoutes from "./routes/deviceRoutes.js";
+import MachinelearningRoutes from "./routes/machinelearningRoutes.js";
+// import NewsRoutes from "./routes/newsRoutes.js";
 
 // Connecting database
 connectDB();
@@ -20,9 +27,9 @@ app.use(express.json()); // Enable json parsing
 app.use(express.urlencoded({ extended: false }));
 app.use(errorHandler);
 // Routes
-app.use("/api/device", require("./routes/deviceRoutes"));
-app.use("/api/machinelearning", require("./routes/machinelearningRoutes"));
-app.use("/api/news", require("./routes/newsRoutes"));
+app.use("/api/device", DeviceRoutes);
+app.use("/api/machinelearning", MachinelearningRoutes);
+// app.use("/api/news", NewsRoutes);
 
 // Server started to listen
 app.listen(port, () => {

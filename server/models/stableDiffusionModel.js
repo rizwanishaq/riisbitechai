@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const promptImage = mongoose.Schema(
   {
@@ -17,4 +17,4 @@ const promptImage = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("PromptImage", promptImage);
+export default mongoose.model("PromptImage", promptImage);
