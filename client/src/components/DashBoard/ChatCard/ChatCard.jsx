@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
+import logo from "../../../asstes/light-bulb.svg";
 import {
   MainContainer,
   ChatContainer,
@@ -25,7 +26,9 @@ const ChatCard = () => {
   const [messages, setMessages] = useState([
     {
       content: "Hello I am ChatGPT, how can I help you?",
+      // content: `${(<img src={logo} />)}`,
       role: "assistant",
+      image: { logo },
     },
   ]);
 
@@ -141,7 +144,15 @@ const ChatCard = () => {
                         direction:
                           message.role === "user" ? "outgoing" : "incoming",
                       }}
-                    />
+                    >
+                      {message.image && (
+                        <Message.ImageContent
+                          src={logo}
+                          alt="logo"
+                          width={200}
+                        />
+                      )}
+                    </Message>
                   );
                 })}
               </MessageList>
