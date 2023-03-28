@@ -6,13 +6,13 @@ HEAD
 "Bearer Token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjI2ZDkwNGJiOTMxYWZmMmNmNDVmYyIsImlhdCI6MTY0MzI4MDMwMSwiZXhwIjoxNjQ1ODcyMzAxfQ.OFDxE9VAyK0nbdLNGt05zMC7iyWcWhs5D_l3-RxK0Ck"
 
 ### Get contact
-GET http://localhost:5000/api/news
+GET https://riisbitec.onrender.com/api/news
 
 ### Post Request
-GET http://localhost:5000/api/machinelearning/stable_diffusion
+GET https://riisbitec.onrender.com/api/machinelearning/stable_diffusion
 
 ### Register User
-POST http://localhost:5000/api/machinelearning/stable_diffusion
+POST https://riisbitec.onrender.com/api/machinelearning/stable_diffusion
 Content-Type: application/json
 
 {
@@ -20,7 +20,7 @@ Content-Type: application/json
 }
 
 ### Register User
-POST http://localhost:5000/api/machinelearning//keywordextractor
+POST https://riisbitec.onrender.com/api/machinelearning//keywordextractor
 Content-Type: application/json
 
 {
@@ -28,8 +28,8 @@ Content-Type: application/json
 }
 
 
-### Register User
-PUT http://localhost:5000/api/goals/62063ee794a8a3ed45e92aa4
+### chatgpt request
+POST http://localhost:5000/api/chatgpt
 Content-Type: application/json
 
 {
@@ -45,26 +45,3 @@ Content-Type: application/json
    "email": "whatever@gmail.com",
    "password": "1234567"
 }
-
-
-### loginuser
-POST http://localhost:5000/api/users/login
-Content-Type: application/json
-
-{
-   "email": "whatever1@gmail.com",
-   "password": "1234567"
-}
-
-
-### Login User
-POST http://localhost:5000/api/auth
-Content-Type: application/json
-
-{
-   "email": "whatever@gmail.com",
-   "password": "1234567"
-}
-
-### Delete
-Delete http://localhost:5000/api/goals/62063ed294a8a3ed45e92aa2

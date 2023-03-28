@@ -8,7 +8,9 @@ const News = () => {
 
   useEffect(() => {
     const getNews = async () => {
-      const response = await axios.get("http://localhost:5000/api/news");
+      const response = await axios.get(
+        "https://riisbitec.onrender.com/api/news"
+      );
       const sources = await response.data.sources;
       setNews(sources);
     };

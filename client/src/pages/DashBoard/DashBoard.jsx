@@ -8,7 +8,8 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
-import WeatherCard from "../../components/DashBoard/WeatherCard/WeatherCard";
+// import WeatherCard from "../../components/DashBoard/WeatherCard/WeatherCard";
+import ChatCard from "../../components/DashBoard/ChatCard/ChatCard";
 
 const DashBoard = () => {
   const { visits } = useDevice();
@@ -35,17 +36,18 @@ const DashBoard = () => {
 
         <section className="section dashboard">
           <Row>
+            <Col lg={4}>
+              <Card>
+                {/* <WeatherCard /> */}
+                <ChatCard />
+                {/* <News /> */}
+              </Card>
+            </Col>
+
             <Col lg={8}>
               <div className="col-12">
                 <Crypto />
               </div>
-            </Col>
-
-            <Col lg={4}>
-              <Card>
-                <WeatherCard />
-                <News />
-              </Card>
             </Col>
           </Row>
         </section>

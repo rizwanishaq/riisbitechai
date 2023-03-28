@@ -16,7 +16,7 @@ const KeywordExtractor = () => {
     setIsOpen(true);
 
     const response = await axios.post(
-      "http://localhost:5000/api/machinelearning//keywordextractor",
+      "https://riisbitec.onrender.com/api/machinelearning//keywordextractor",
       {
         text: text,
       },

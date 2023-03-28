@@ -13,6 +13,7 @@ import connectDB from "./config/db.js";
 import DeviceRoutes from "./routes/deviceRoutes.js";
 import MachinelearningRoutes from "./routes/machinelearningRoutes.js";
 import NewsRoutes from "./routes/newsRoutes.js";
+import ChatGPTRoutes from "./routes/chatGPTRoutes.js";
 
 // Connecting database
 connectDB();
@@ -30,6 +31,7 @@ app.use(errorHandler);
 app.use("/api/device", DeviceRoutes);
 app.use("/api/machinelearning", MachinelearningRoutes);
 app.use("/api/news", NewsRoutes);
+app.use("/api/chatgpt", ChatGPTRoutes);
 
 // Server started to listen
 app.listen(port, () => {
