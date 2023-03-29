@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
-import { useToast } from "@chakra-ui/react";
+import { Avatar, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import logo from "../../../asstes/light-bulb.svg";
+import avatar from "../../../asstes/openai.png";
 import {
   MainContainer,
   ChatContainer,
@@ -73,7 +74,7 @@ const ChatCard = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/chatgpt",
+        "https://riisbitec.onrender.com/api/chatgpt",
         { messages: JSON.stringify(apiRequestBody) },
         {
           headers: {
@@ -145,13 +146,16 @@ const ChatCard = () => {
                           message.role === "user" ? "outgoing" : "incoming",
                       }}
                     >
-                      {message.image && (
+                      {/* {message.role === "assistant" && ( */}
+                      {/* <Avatar src={logo} name="Joe" /> */}
+                      {/* )} */}
+                      {/* {message.image && (
                         <Message.ImageContent
                           src={logo}
                           alt="logo"
                           width={200}
                         />
-                      )}
+                      )} */}
                     </Message>
                   );
                 })}
