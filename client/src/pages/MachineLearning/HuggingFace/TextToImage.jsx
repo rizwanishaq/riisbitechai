@@ -18,7 +18,7 @@ const TextToImage = () => {
   useEffect(() => {
     const get_prompt_image_pairs = async () => {
       const response = await axios.get(
-        "http://localhost:5000/api/machinelearning/stable_diffusion"
+        "https://riisbitec.onrender.com/api/machinelearning/stable_diffusion"
       );
       setPrompt_Image_Pairs(response.data.prompt_image_pairs);
     };
