@@ -14,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import TextToImage from "./pages/MachineLearning/HuggingFace/TextToImage";
 import ChatGPT from "./pages/MachineLearning/ChatGPT/ChatGPT";
 import KeywordExtractor from "./pages/MachineLearning/KeywordExtractor/KeywordExtractor";
+import Speech2Text from "./pages/MachineLearning/Speech2Text/Speech2Text";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,11 @@ const router = createBrowserRouter([
       {
         path: "/keywordextractor",
         element: <KeywordExtractor />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/speech2text",
+        element: <Speech2Text />,
         errorElement: <Error />,
       },
     ],

@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
-import { Avatar, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import logo from "../../../asstes/light-bulb.svg";
-import avatar from "../../../asstes/openai.png";
 import {
   MainContainer,
   ChatContainer,

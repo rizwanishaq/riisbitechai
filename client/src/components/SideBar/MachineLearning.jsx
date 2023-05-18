@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 
 const MachineLearning = () => {
@@ -36,10 +36,10 @@ const MachineLearning = () => {
           </Link>
         </li>
         <li>
-          {/* <Link to="/chatgpt">
+          <Link to="/chatgpt">
             <i className="bi bi-circle"></i>
             <span>ChatGPT Demo</span>
-          </Link> */}
+          </Link>
         </li>
         <li>
           <Link to="/keywordextractor">
@@ -48,14 +48,13 @@ const MachineLearning = () => {
           </Link>
         </li>
 
-        {/* 
-        
         <li>
-          <Link to="/buttons">
+          <Link to="/speech2text">
             <i className="bi bi-circle"></i>
-            <span>Buttons</span>
+            <span>Speech2Text</span>
           </Link>
         </li>
+        {/* 
         <li>
           <Link to="/cards">
             <i className="bi bi-circle"></i>
