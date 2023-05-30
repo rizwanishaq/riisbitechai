@@ -1,0 +1,89 @@
+import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import { BsFillPersonFill } from "react-icons/bs";
+import Stack from "react-bootstrap/Stack";
+
+const AvatarOptions = () => {
+  const [options, setOptions] = useState({
+    language: "english",
+    character: "marta",
+    "text-content": "",
+    hd: false,
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(options);
+  };
+
+  return (
+    <Card>
+      <Card.Body className="pb-0">
+        <Card.Title className="text-center">Avatar settings</Card.Title>
+        <Form className="align-items-center mt-3" onSubmit={handleSubmit}>
+          <Form.Group>
+            <Form.Label>Language</Form.Label>
+            <Form.Select
+              onChange={(e) =>
+                setOptions({ ...options, language: e.target.value })
+              }
+            >
+              <option value="english">English</option>
+              <option value="spanish">Spanish</option>
+              <option value="german">German</option>
+            </Form.Select>
+          </Form.Group>
+          <Form.Group className="mt-3">
+            <Form.Label>Voice</Form.Label>
+            <Form.Select
+              onChange={(e) =>
+                setOptions({ ...options, character: e.target.value })
+              }
+            >
+              <option value="Jenny">Jenny</option>
+              <option value="Marta">Marta</option>
+              <option value="Hubby">Hubby</option>
+            </Form.Select>
+          </Form.Group>
+
+          <Form.Group className="mt-3 mb-3">
+            <Form.Label>Text content</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={7}
+              placeholder="Please enter text content"
+              onChange={(e) =>
+                setOptions({ ...options, "text-content": e.target.value })
+              }
+            />
+          </Form.Group>
+          <Stack direction="horizontal" gap={3}>
+            <Button
+              className="mt-3 mb-3"
+              type="submit"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <BsFillPersonFill size={20} />
+              <span> &nbsp;Generate Avatar</span>
+            </Button>
+            <Form.Group className="mt-3 mb-3 ms-auto">
+              <Form.Check
+                type="switch"
+                id="hd-switch"
+                label="HD"
+                checked={options.hd}
+                onChange={(e) => {
+                  setOptions({ ...options, hd: !options.hd });
+                }}
+              />
+            </Form.Group>
+          </Stack>
+        </Form>
+      </Card.Body>
+    </Card>
+  );
+};
+
+export default AvatarOptions;

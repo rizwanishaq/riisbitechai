@@ -1,3 +1,5 @@
+// Ref - [https://stackoverflow.com/questions/28227380/downsampling-a-pcm-audio-buffer-in-javascript]
+
 export const downsampleBuffer = (
   buffer,
   recordSampleRate,

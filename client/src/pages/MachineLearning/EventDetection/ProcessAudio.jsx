@@ -1,3 +1,5 @@
+// Audio-worklet for scriptProcess - https://gist.github.com/louisgv/f210a1139d955baf511ff35f58fc8db1
+
 import React, { useEffect, useRef, useState } from "react";
 import * as tf from "@tensorflow/tfjs";
 import { toast } from "react-toastify";
@@ -20,6 +22,7 @@ const ProcessAudio = ({ labels, model, top5, setTop5 }) => {
     });
 
     const source = audioContext.current.createMediaStreamSource(stream);
+
     const processor = audioContext.current.createScriptProcessor(
       NUM_INPUT_SAMPLES,
       1,
