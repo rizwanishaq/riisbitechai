@@ -14,6 +14,7 @@ import DeviceRoutes from "./routes/deviceRoutes.js";
 import MachinelearningRoutes from "./routes/machinelearningRoutes.js";
 import NewsRoutes from "./routes/newsRoutes.js";
 import ChatGPTRoutes from "./routes/chatGPTRoutes.js";
+import MimicRoutes from "./routes/mimicRoutes.js";
 
 // Connecting database
 connectDB();
@@ -32,6 +33,7 @@ app.use("/api/device", DeviceRoutes);
 app.use("/api/machinelearning", MachinelearningRoutes);
 app.use("/api/news", NewsRoutes);
 app.use("/api/chatgpt", ChatGPTRoutes);
+app.use("/api/mimic", MimicRoutes);
 
 // Server started to listen
 app.listen(port, () => {

@@ -8,6 +8,9 @@ HEAD
 ### Get contact
 GET https://riisbitec.onrender.com/api/news
 
+
+### Get contact
+GET http://localhost:5000/api/mimic/videosurl
 ### Post Request
 GET https://riisbitec.onrender.com/api/machinelearning/stable_diffusion
 
