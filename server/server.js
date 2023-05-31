@@ -1,9 +1,11 @@
+import WebSocket, { WebSocketServer } from "ws";
 import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
 import * as dotenv from "dotenv";
 import cors from "cors";
 import colors from "colors";
+import { v4 as uuidv4 } from "uuid";
 dotenv.config();
 import fetch from "node-fetch";
 globalThis.fetch = fetch;
@@ -15,6 +17,8 @@ import MachinelearningRoutes from "./routes/machinelearningRoutes.js";
 import NewsRoutes from "./routes/newsRoutes.js";
 import ChatGPTRoutes from "./routes/chatGPTRoutes.js";
 import MimicRoutes from "./routes/mimicRoutes.js";
+import processWebSocket from "./gRPCServices/streamProcessing.js";
+import client from "./config/config.js";
 
 // Connecting database
 connectDB();
@@ -36,6 +40,18 @@ app.use("/api/chatgpt", ChatGPTRoutes);
 app.use("/api/mimic", MimicRoutes);
 
 // Server started to listen
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`CORS-enables server is listening on port ${port}`.green);
+});
+
+// Websocket Server
+const wss = new WebSocketServer({ server: server });
+console.log("websocket server created".green);
+wss.on("connection", (ws, req) => {
+  console.log(
+    `websocket connection from ${req.connection.remoteAddress}`.red.underline
+      .bold
+  );
+
+  processWebSocket(ws, client, uuidv4());
 });
