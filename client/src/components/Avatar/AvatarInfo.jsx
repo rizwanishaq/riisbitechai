@@ -1,15 +1,16 @@
 import React from "react";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
-
-const AvatarInfo = ({ img_url, name }) => {
+import { useVideos } from "../../hooks/useVideos";
+const AvatarInfo = ({ video_url }) => {
+  const { setAvatar } = useVideos();
   return (
-    <OverlayTrigger
-      placement="bottom"
-      overlay={<Tooltip id="button-tooltip-2">{name}</Tooltip>}
+    <video
+      width="15%"
+      height="auto"
+      className="img-thumbnail"
+      onClick={() => setAvatar(video_url)}
     >
-      <img src={img_url} width="15%" height="auto" className="img-thumbnail" />
-    </OverlayTrigger>
+      <source src={video_url} type="video/mp4" />
+    </video>
   );
 };
 

@@ -1,9 +1,9 @@
-import React from "react";
-import Container from "react-bootstrap/Container";
 import AvatarInfo from "./AvatarInfo";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-
+import { useVideos } from "../../hooks/useVideos";
 const AvatarVideosList = () => {
+  const { data } = useVideos();
+
   return (
     <ButtonGroup
       style={{
@@ -13,19 +13,7 @@ const AvatarVideosList = () => {
         overflowY: "auto",
       }}
     >
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
-      <AvatarInfo img_url={"/assets/img/product-2.jpg"} name={"something"} />
+      {data && data.map((url) => <AvatarInfo key={url} video_url={url} />)}
     </ButtonGroup>
   );
 };
