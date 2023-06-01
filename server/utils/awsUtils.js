@@ -22,4 +22,25 @@ export const listUrls = async (prefix = process.env.prefix) => {
   return urls;
 };
 
+// export const uploadFile = (
+//   fileName,
+//   folderName = "Trident_language_identifier/test"
+// ) => {
+//   return new Promise((resolve, reject) => {
+//     const fileContent = fs.readFileSync(fileName);
+//     const params = {
+//       Bucket: process.env.bucket,
+//       Key: `rizwan.ishaq/${folderName}/${path.basename(fileName)}`,
+//       Body: fileContent,
+//       ACL: "public-read",
+//     };
+//     s3.upload(params, (s3Err, info) => {
+//       if (s3Err) {
+//         return reject(s3Err);
+//       }
+//       return resolve(info.Location);
+//     });
+//   });
+// };
+
 export default listUrls;

@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { BsFillPersonFill } from "react-icons/bs";
 import Stack from "react-bootstrap/Stack";
 import { useVideos } from "../../hooks/useVideos";
+import { useQuery } from "react-query";
 
 const AvatarOptions = () => {
   const [options, setOptions] = useState({
@@ -12,6 +13,15 @@ const AvatarOptions = () => {
     character: "marta",
     "text-content": "",
     hd: false,
+  });
+  const [languages, setLanguages] = useState([]);
+
+  const {} = useQuery("languages", async () => {
+    const response = await fetch("http://localhost:5000/api/tts/languages");
+    const responseData = await response.json();
+    setLanguages(responseData.languages);
+
+    return;
   });
 
   const { data, setAvatar, avatar } = useVideos();
@@ -33,9 +43,13 @@ const AvatarOptions = () => {
                 setOptions({ ...options, language: e.target.value })
               }
             >
-              <option value="english">English</option>
-              <option value="spanish">Spanish</option>
-              <option value="german">German</option>
+              {" "}
+              {languages &&
+                languages.map((language) => (
+                  <option key={language} value={language}>
+                    {language}
+                  </option>
+                ))}
             </Form.Select>
           </Form.Group>
           <Form.Group className="mt-3">

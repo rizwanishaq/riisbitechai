@@ -17,7 +17,7 @@ const DashBoard = () => {
       <main id="main" className="main">
         <div className="pagetitle">
           <h1>
-            Dashboard
+            Home
             <Button className="position-relative" variant="light" disabled>
               <MdVisibility />
               <Badge

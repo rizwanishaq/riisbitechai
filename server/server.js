@@ -17,6 +17,7 @@ import MachinelearningRoutes from "./routes/machinelearningRoutes.js";
 import NewsRoutes from "./routes/newsRoutes.js";
 import ChatGPTRoutes from "./routes/chatGPTRoutes.js";
 import MimicRoutes from "./routes/mimicRoutes.js";
+import TTSRoutes from "./routes/ttsRoutes.js";
 import processWebSocket from "./gRPCServices/streamProcessing.js";
 import client from "./config/config.js";
 
@@ -38,6 +39,7 @@ app.use("/api/machinelearning", MachinelearningRoutes);
 app.use("/api/news", NewsRoutes);
 app.use("/api/chatgpt", ChatGPTRoutes);
 app.use("/api/mimic", MimicRoutes);
+app.use("/api/tts", TTSRoutes);
 
 // Server started to listen
 const server = app.listen(port, () => {

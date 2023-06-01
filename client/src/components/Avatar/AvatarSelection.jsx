@@ -11,7 +11,6 @@ const AvatarSelection = () => {
         <RealTimeAvatar />
         <DisplayResponse />
       </Row>
-      <Row></Row>
     </>
   );
 };
