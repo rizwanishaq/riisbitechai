@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import LocationContextProvider from "./contexts/LocationContext";
 import VideosContextProvider from "./contexts/VideosContext";
 import DeviceContextProvider from "./contexts/DeviceContext";
+import AvatarContextProvider from "./contexts/AvatarContext";
 import { ChakraProvider } from "@chakra-ui/react";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 
@@ -20,7 +21,9 @@ root.render(
         <DeviceContextProvider>
           <LocationContextProvider>
             <VideosContextProvider>
-              <App />
+              <AvatarContextProvider>
+                <App />
+              </AvatarContextProvider>
             </VideosContextProvider>
           </LocationContextProvider>
         </DeviceContextProvider>

@@ -12,10 +12,16 @@ const processWebSocket = (
   });
 
   const call = client.wav2lipStream();
-  call.write({ uid: uid, name: name });
 
   ws.on("message", (audio) => {
-    myWritableStreamBuffer.write(audio);
+    try {
+      const { avatar } = JSON.parse(audio);
+      console.log(avatar);
+      if (avatar) name = JSON.parse(audio)["avatar"];
+      call.write({ uid: uid, name: name });
+    } catch (_) {
+      myWritableStreamBuffer.write(audio);
+    }
   });
 
   const writeInterval = setInterval(() => {

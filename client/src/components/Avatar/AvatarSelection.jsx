@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import Row from "react-bootstrap/Row";
-import AvatarVideo from "./AvatarVideo";
-import AvatarVideosList from "./AvatarVideosList";
+import RealTimeAvatar from "./RealTimeAvatar";
+import DisplayResponse from "./DisplayResponse";
+import { Container } from "react-bootstrap";
 
 const AvatarSelection = () => {
   return (
     <>
       <Row>
-        <AvatarVideo />
+        <RealTimeAvatar />
+        <DisplayResponse />
       </Row>
-      <Row>
-        <AvatarVideosList />
-      </Row>
+      <Row></Row>
     </>
   );
 };

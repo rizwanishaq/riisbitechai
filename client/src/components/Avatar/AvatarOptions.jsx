@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { BsFillPersonFill } from "react-icons/bs";
 import Stack from "react-bootstrap/Stack";
+import { useVideos } from "../../hooks/useVideos";
 
 const AvatarOptions = () => {
   const [options, setOptions] = useState({
@@ -12,6 +13,8 @@ const AvatarOptions = () => {
     "text-content": "",
     hd: false,
   });
+
+  const { data, setAvatar, avatar } = useVideos();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,6 +48,30 @@ const AvatarOptions = () => {
               <option value="Jenny">Jenny</option>
               <option value="Marta">Marta</option>
               <option value="Hubby">Hubby</option>
+            </Form.Select>
+          </Form.Group>
+
+          <Form.Group className="mt-3">
+            <Form.Label>
+              <Stack direction="horizontal" gap={3}>
+                <Form.Group className="mt-1 ms-auto">
+                  <video
+                    src={avatar}
+                    width="15%"
+                    height="15%"
+                    className="img-thumbnail"
+                  ></video>
+                </Form.Group>
+                <span> &nbsp;Avatar</span>
+              </Stack>
+            </Form.Label>
+            <Form.Select onChange={(e) => setAvatar(e.target.value)}>
+              {data &&
+                data.map((url) => (
+                  <option value={url} key={url}>
+                    <>{url.split("/").pop().replace(".mp4", "")}</>
+                  </option>
+                ))}
             </Form.Select>
           </Form.Group>
 
