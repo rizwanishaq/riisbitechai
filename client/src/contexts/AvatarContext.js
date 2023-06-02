@@ -10,6 +10,7 @@ const AvatarContextProvider = ({ children }) => {
   const { avatar } = useVideos();
   const [start, setStart] = useState(false);
   const [error, setError] = useState("");
+
   const [responseData, setResponseData] = useState({
     image: null,
     audio_contents: null,

@@ -16,21 +16,26 @@ GET http://localhost:5000/api/mimic/videosurl
 GET http://localhost:5000/api/tts/languages
 
 ### Get languages
-GET http://localhost:5000/api/tts/voices
-Content-Type: application/json
-
-{
-   "lang": "es-ES"
-}
+GET http://localhost:5000/api/tts/voices/en-US
 
 ### Get languages
-GET http://localhost:5000/api/tts/synthesis
+POST http://localhost:5000/api/tts/synthesis
 Content-Type: application/json
 
 {
    "language": "es-ES",
    "voice": "UTESM", 
    "text": "El cinturón de asteroides es una región del sistema solar comprendida aproximadamente entre las órbitas de Marte y Júpiter. Alberga multitud de objetos irregulares denominados asteroides o planetas menores. Esta región también se denomina cinturón principal con la finalidad de distinguirla de otras agrupaciones de planetas menores dentro del sistema solar, como el cinturón de Kuiper o el disco disperso. '"
+}
+
+
+### Get languages
+POST http://localhost:5000/api/mimic/getAvatar
+Content-Type: application/json
+
+{
+   "audio_url": "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/audios/test123.wav",
+   "avatar": "https://dialoga-machine-learning.s3.amazonaws.com/mimic/source/AnaBlanco_2.mp4"
 }
 
 

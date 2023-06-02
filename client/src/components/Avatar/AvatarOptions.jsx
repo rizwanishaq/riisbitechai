@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -8,15 +8,17 @@ import { useVideos } from "../../hooks/useVideos";
 import { useQuery } from "react-query";
 
 const AvatarOptions = () => {
+  const { data, setAvatar, avatar, setAudioUrl } = useVideos();
   const [options, setOptions] = useState({
-    language: "english",
-    character: "marta",
+    language: "",
+    voice: "",
     "text-content": "",
     hd: false,
   });
   const [languages, setLanguages] = useState([]);
+  const [voices, setVoices] = useState([]);
 
-  const {} = useQuery("languages", async () => {
+  useQuery("languages", async () => {
     const response = await fetch("http://localhost:5000/api/tts/languages");
     const responseData = await response.json();
     setLanguages(responseData.languages);
@@ -24,11 +26,33 @@ const AvatarOptions = () => {
     return;
   });
 
-  const { data, setAvatar, avatar } = useVideos();
+  useEffect(() => {
+    const getVoices = async () => {
+      const response = await fetch(
+        `http://localhost:5000/api/tts/voices/${options.language}`
+      );
+      const responseData = await response.json();
+      setVoices(responseData.voices);
+    };
+    if (options.language !== "") {
+      getVoices();
+    }
+  }, [options.language]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(options);
+    const response = await fetch("http://localhost:5000/api/tts/synthesis", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        language: options.language,
+        voice: options.voice,
+        text: options["text-content"],
+      }),
+    });
+
+    const responseData = await response.json();
+    setAudioUrl(responseData);
   };
 
   return (
@@ -44,6 +68,7 @@ const AvatarOptions = () => {
               }
             >
               {" "}
+              <option value="">Select language</option>
               {languages &&
                 languages.map((language) => (
                   <option key={language} value={language}>
@@ -56,12 +81,16 @@ const AvatarOptions = () => {
             <Form.Label>Voice</Form.Label>
             <Form.Select
               onChange={(e) =>
-                setOptions({ ...options, character: e.target.value })
+                setOptions({ ...options, voice: e.target.value })
               }
             >
-              <option value="Jenny">Jenny</option>
-              <option value="Marta">Marta</option>
-              <option value="Hubby">Hubby</option>
+              <option value="">Select voice</option>
+              {voices &&
+                voices.map((voice) => (
+                  <option key={voice} value={voice}>
+                    {voice}
+                  </option>
+                ))}
             </Form.Select>
           </Form.Group>
 

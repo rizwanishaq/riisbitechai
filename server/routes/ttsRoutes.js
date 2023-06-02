@@ -8,7 +8,7 @@ import {
 
 const router = express.Router();
 router.get("/languages", getLanguages);
-router.get("/voices", getVoices);
-router.get("/synthesis", getSpeech);
+router.get("/voices/:lang", getVoices);
+router.post("/synthesis", getSpeech);
 
 export default router;

@@ -18,8 +18,7 @@ import NewsRoutes from "./routes/newsRoutes.js";
 import ChatGPTRoutes from "./routes/chatGPTRoutes.js";
 import MimicRoutes from "./routes/mimicRoutes.js";
 import TTSRoutes from "./routes/ttsRoutes.js";
-import processWebSocket from "./gRPCServices/streamProcessing.js";
-import client from "./config/config.js";
+import processWebSocket from "./mimicServices/mimicServices.js";
 
 // Connecting database
 connectDB();
@@ -55,5 +54,5 @@ wss.on("connection", (ws, req) => {
       .bold
   );
 
-  processWebSocket(ws, client, uuidv4());
+  processWebSocket(ws, uuidv4());
 });

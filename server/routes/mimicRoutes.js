@@ -1,9 +1,9 @@
 import express from "express";
-import { getVideo, videosUrl } from "../controllers/mimicController.js";
+import { getAvatar, videosUrl } from "../controllers/mimicController.js";
 
 const router = express.Router();
 
-router.get("/", getVideo);
+router.post("/getAvatar", getAvatar);
 router.get("/videosurl", videosUrl);
 
 export default router;

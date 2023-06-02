@@ -1,8 +1,30 @@
 import streamBuffers from "stream-buffers";
+import { v4 as uuidv4 } from "uuid";
+import grpc from "@grpc/grpc-js";
+import protoLoader from "@grpc/proto-loader";
+import * as dotenv from "dotenv";
+dotenv.config();
+
+const proto = grpc.loadPackageDefinition(
+  protoLoader.loadSync("./protocol/wav2lip.proto", {
+    keepCase: true,
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true,
+  })
+);
+
+// Setting up the grpc server credentials
+const REMOTE_SERVER = `${process.env.MODEL_IP}:${process.env.MODEL_PORT}`;
+
+const client = new proto.wav2lip.v1.Wav2Lip(
+  REMOTE_SERVER,
+  grpc.credentials.createInsecure()
+);
 
 const processWebSocket = (
   ws,
-  client,
   uid = "rizwan",
   name = "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_another.mp4"
 ) => {
@@ -58,6 +80,26 @@ const processWebSocket = (
     myWritableStreamBuffer.destroy();
     clearInterval(writeInterval);
     call.end();
+  });
+};
+
+export const generateAvatar = (audio_url, name) => {
+  return new Promise((resolve, reject) => {
+    const request = {
+      uid: uuidv4(),
+      audio_url: audio_url,
+      name: name,
+    };
+
+    client.predict(request, (err, response) => {
+      if (err) {
+        console.log(err);
+        return reject(`Error during request -> ${err}`);
+      }
+      return resolve({
+        video_url: response.video_url,
+      });
+    });
   });
 };
 

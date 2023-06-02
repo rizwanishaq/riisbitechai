@@ -3,6 +3,7 @@ import grpc from "@grpc/grpc-js";
 import { createFile, withWaveHeader, concat } from "./utils.js";
 
 import protoLoader from "@grpc/proto-loader";
+import { uploadAudio } from "../utils/awsUtils.js";
 
 const proto = grpc.loadPackageDefinition(
   protoLoader.loadSync("./protocol/tts.proto", {
@@ -84,7 +85,7 @@ export const SynthesizeSpeech = ({ data, fileName }) => {
     let totalBuffer;
 
     call.on("data", (chunk) => {
-      const { audio_content, num_block, total_blocks } = chunk;
+      const { audio_content } = chunk;
       chunk.sampleRate = sampleRate;
 
       let ab = Buffer.from(audio_content);
@@ -113,7 +114,7 @@ export const SynthesizeSpeech = ({ data, fileName }) => {
       console.log(`file completed`);
     });
 
-    resolve();
+    resolve(uploadAudio(`${fileName}.wav`));
   });
 };
 

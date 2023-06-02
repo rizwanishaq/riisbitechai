@@ -12,7 +12,8 @@ export const getLanguages = asyncHandler(async (req, res) => {
 });
 
 export const getVoices = asyncHandler(async (req, res) => {
-  const { lang } = req.body;
+  const { lang } = req.params;
+
   const response = await listVoices(lang);
 
   res.status(200).json(response);
@@ -20,7 +21,7 @@ export const getVoices = asyncHandler(async (req, res) => {
 
 export const getSpeech = asyncHandler(async (req, res) => {
   const { language, voice, text } = req.body;
-  console.log(req.body);
+
   const response = await SynthesizeSpeech({
     data: { language, voice, text },
     fileName: "test123",
