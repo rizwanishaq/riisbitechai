@@ -5,10 +5,10 @@ import Button from "react-bootstrap/Button";
 import { BsFillPersonFill } from "react-icons/bs";
 import Stack from "react-bootstrap/Stack";
 import { useVideos } from "../../hooks/useVideos";
-import { useQuery } from "react-query";
 
 const AvatarOptions = () => {
-  const { data, setAvatar, avatar, setAudioUrl } = useVideos();
+  const { setAvatar, avatar, setAudioUrl } = useVideos();
+  const [videos, setVideos] = useState([]);
   const [options, setOptions] = useState({
     language: "",
     voice: "",
@@ -18,13 +18,23 @@ const AvatarOptions = () => {
   const [languages, setLanguages] = useState([]);
   const [voices, setVoices] = useState([]);
 
-  useQuery("languages", async () => {
-    const response = await fetch("http://localhost:5000/api/tts/languages");
-    const responseData = await response.json();
-    setLanguages(responseData.languages);
+  useEffect(() => {
+    const getVideos = async () => {
+      const response = await fetch("http://localhost:5000/api/mimic/videosurl");
+      const responseData = await response.json();
+      setVideos(responseData.urls);
+    };
+    getVideos();
+  }, []);
 
-    return;
-  });
+  useEffect(() => {
+    const getLanguages = async () => {
+      const response = await fetch("http://localhost:5000/api/tts/languages");
+      const responseData = await response.json();
+      setLanguages(responseData.languages);
+    };
+    getLanguages();
+  }, []);
 
   useEffect(() => {
     const getVoices = async () => {
@@ -109,8 +119,8 @@ const AvatarOptions = () => {
               </Stack>
             </Form.Label>
             <Form.Select onChange={(e) => setAvatar(e.target.value)}>
-              {data &&
-                data.map((url) => (
+              {videos &&
+                videos.map((url) => (
                   <option value={url} key={url}>
                     <>{url.split("/").pop().replace(".mp4", "")}</>
                   </option>

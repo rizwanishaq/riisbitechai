@@ -103,15 +103,11 @@ export const SynthesizeSpeech = ({ data, fileName }) => {
     });
 
     call.on("end", () => {
-      console.log(`call end`);
-
       let wav = Buffer.from(
         withWaveHeader(Buffer.from(totalBuffer), 1, sampleRate)
       );
-
       file.write(wav);
       file.end();
-      console.log(`file completed`);
     });
 
     resolve(uploadAudio(`${fileName}.wav`));
