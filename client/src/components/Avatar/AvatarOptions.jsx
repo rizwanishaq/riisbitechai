@@ -62,7 +62,7 @@ const AvatarOptions = () => {
     });
 
     const responseData = await response.json();
-    setAudioUrl(responseData);
+    setAudioUrl(responseData.audio_url);
   };
 
   return (

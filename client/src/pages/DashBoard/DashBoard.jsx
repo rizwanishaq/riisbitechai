@@ -34,16 +34,15 @@ const DashBoard = () => {
 
         <section className="section dashboard">
           <Row>
-            <Col lg={8}>
-              <div className="col-12">
-                <AvatarSelection />
-              </div>
-            </Col>
-
             <Col lg={4}>
               <Card>
                 <AvatarOptions />
               </Card>
+            </Col>
+            <Col lg={8}>
+              <div className="col-12">
+                <AvatarSelection />
+              </div>
             </Col>
           </Row>
         </section>

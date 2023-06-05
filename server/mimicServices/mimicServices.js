@@ -38,7 +38,6 @@ const processWebSocket = (
   ws.on("message", (audio) => {
     try {
       const { avatar } = JSON.parse(audio);
-      console.log(avatar);
       if (avatar) name = JSON.parse(audio)["avatar"];
       call.write({ uid: uid, name: name });
     } catch (_) {

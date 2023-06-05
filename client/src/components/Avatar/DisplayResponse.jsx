@@ -9,9 +9,11 @@ const DisplayResponse = () => {
   const { avatar } = useVideos();
   const { audioUrl } = useVideos();
   const [avatarVideo, setAvatarVideo] = useState("");
+  const [processing, setProcesssing] = useState(false);
 
   useEffect(() => {
     const getVideo = async () => {
+      setProcesssing(true);
       const response = await fetch(
         "http://localhost:5000/api/mimic/getAvatar",
         {
@@ -26,6 +28,7 @@ const DisplayResponse = () => {
 
       const responseData = await response.json();
       setAvatarVideo(responseData.response.video_url);
+      setProcesssing(false);
     };
     if (audioUrl !== "") {
       getVideo();
@@ -45,7 +48,11 @@ const DisplayResponse = () => {
         {error && <Alert variant="danger">{error}</Alert>}
       </Col>
       <Col>
-        <video src={avatarVideo} controls></video>
+        {processing ? (
+          <img variant="top" src="i/processing.gif" />
+        ) : (
+          <video src={avatarVideo} controls></video>
+        )}
       </Col>
     </>
   );
