@@ -8,8 +8,8 @@ const AvatarSelection = () => {
   return (
     <>
       <Row>
-        <RealTimeAvatar />
         <DisplayResponse />
+        <RealTimeAvatar />
       </Row>
     </>
   );

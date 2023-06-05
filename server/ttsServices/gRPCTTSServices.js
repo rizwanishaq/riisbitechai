@@ -1,7 +1,8 @@
 import grpc from "@grpc/grpc-js";
-import { uploadAudio } from "../utils/awsUtils.js";
+import wav from "wav";
 
-import { createFile, withWaveHeader, concat } from "./utils.js";
+import { uploadAudio } from "../utils/awsUtils.js";
+import { deleteFile } from "./utils.js";
 
 import protoLoader from "@grpc/proto-loader";
 
@@ -76,26 +77,23 @@ export const SynthesizeSpeech = ({ data, fileName }) => {
     audio_config,
   };
 
+  const fileWriter = new wav.FileWriter(`${fileName}.wav`, {
+    channels: 1,
+    sampleRate: 22050,
+    bitDepth: 16,
+  });
   return new Promise((resolve, reject) => {
     const call = client.SynthesizeSpeech(ttsRequest, metadata);
-    const file = createFile(fileName);
-
-    const sampleRate = 22050;
-
-    let totalBuffer;
 
     call.on("data", (chunk) => {
       const { audio_content } = chunk;
-      chunk.sampleRate = sampleRate;
-
-      let ab = Buffer.from(audio_content);
-      totalBuffer = totalBuffer
-        ? Buffer.from(concat(Buffer.from(totalBuffer), ab))
-        : Buffer.from(ab);
+      fileWriter.write(audio_content);
     });
     call.on("error", (error) => {
       console.log(error);
-      reject();
+      fileWriter.end();
+      deleteFile(`${fileName}.wav`);
+      reject(error);
     });
 
     call.on("status", (status) => {
@@ -103,13 +101,10 @@ export const SynthesizeSpeech = ({ data, fileName }) => {
     });
 
     call.on("end", async () => {
-      let wav = Buffer.from(
-        withWaveHeader(Buffer.from(totalBuffer), 1, sampleRate)
-      );
-      file.write(wav);
-      file.end();
-
-      resolve(fileName);
+      fileWriter.end();
+      const audio_url = await uploadAudio(`${fileName}.wav`);
+      deleteFile(`${fileName}.wav`);
+      resolve(audio_url);
     });
   });
 };

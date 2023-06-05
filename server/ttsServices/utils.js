@@ -4,6 +4,15 @@ export const createFile = (id) => {
   return fs.createWriteStream(name);
 };
 
+export const deleteFile = (fileName) => {
+  fs.unlink(fileName, (err) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(`${fileName} - deleted`);
+  });
+};
+
 export const concat = (buffer1, buffer2) => {
   const tmp = new Uint8Array(buffer1.byteLength + buffer2.byteLength);
 
