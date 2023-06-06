@@ -6,6 +6,9 @@ import * as dotenv from "dotenv";
 import cors from "cors";
 import colors from "colors";
 import { v4 as uuidv4 } from "uuid";
+import https from "https";
+import fs from "fs";
+
 dotenv.config();
 import fetch from "node-fetch";
 globalThis.fetch = fetch;
@@ -28,10 +31,25 @@ const port = process.env.PORT || 5000;
 // Middleware initialized
 app.use(morgan("common")); // Logging
 app.use(helmet()); // For security
-app.use(cors()); // Enable all cors request
 app.use(express.json()); // Enable json parsing
 app.use(express.urlencoded({ extended: false }));
 app.use(errorHandler);
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+
+  next();
+});
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+); // Enable all cors request
+
 // Routes
 app.use("/api/device", DeviceRoutes);
 app.use("/api/machinelearning", MachinelearningRoutes);
@@ -41,9 +59,17 @@ app.use("/api/mimic", MimicRoutes);
 app.use("/api/tts", TTSRoutes);
 
 // Server started to listen
-const server = app.listen(port, () => {
-  console.log(`CORS-enables server is listening on port ${port}`.green);
-});
+const server = https
+  .createServer(
+    {
+      key: fs.readFileSync("server.key"),
+      cert: fs.readFileSync("server.cert"),
+    },
+    app
+  )
+  .listen(port, () => {
+    console.log(`CORS-enables server is listening on port ${port}`.green);
+  });
 
 // Websocket Server
 const wss = new WebSocketServer({ server: server });

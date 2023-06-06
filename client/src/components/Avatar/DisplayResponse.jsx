@@ -3,7 +3,7 @@ import { Col, Card } from "react-bootstrap";
 import { useVideos } from "../../hooks/useVideos";
 
 const DisplayResponse = () => {
-  const { avatar } = useVideos();
+  const { avatar, hd } = useVideos();
   const { audioUrl } = useVideos();
   const [avatarVideo, setAvatarVideo] = useState("");
   const [processing, setProcesssing] = useState(false);
@@ -12,13 +12,14 @@ const DisplayResponse = () => {
     const getVideo = async () => {
       setProcesssing(true);
       const response = await fetch(
-        "http://localhost:5000/api/mimic/getAvatar",
+        "https://100.100.100.52:5000/api/mimic/getAvatar",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             audio_url: audioUrl,
             avatar: avatar,
+            hd: hd,
           }),
         }
       );
@@ -35,11 +36,13 @@ const DisplayResponse = () => {
   return (
     <Col>
       <Card style={{ width: "25rem" }}>
-        {processing ? (
-          <img variant="top" src="i/processing.gif" />
-        ) : (
-          <video src={avatarVideo} controls></video>
-        )}
+        <Card.Body>
+          {processing ? (
+            <img variant="top" src="i/processing.gif" />
+          ) : (
+            <video src={avatarVideo} controls className="mt-3"></video>
+          )}
+        </Card.Body>
       </Card>
     </Col>
   );

@@ -82,12 +82,13 @@ const processWebSocket = (
   });
 };
 
-export const generateAvatar = (audio_url, name) => {
+export const generateAvatar = (audio_url, name, hd) => {
   return new Promise((resolve, reject) => {
     const request = {
       uid: uuidv4(),
       audio_url: audio_url,
       name: name,
+      hd: hd,
     };
 
     client.predict(request, (err, response) => {

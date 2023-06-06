@@ -7,20 +7,21 @@ import Stack from "react-bootstrap/Stack";
 import { useVideos } from "../../hooks/useVideos";
 
 const AvatarOptions = () => {
-  const { setAvatar, avatar, setAudioUrl } = useVideos();
+  const { setAvatar, avatar, setAudioUrl, hd, setHd } = useVideos();
   const [videos, setVideos] = useState([]);
   const [options, setOptions] = useState({
     language: "",
     voice: "",
     "text-content": "",
-    hd: false,
   });
   const [languages, setLanguages] = useState([]);
   const [voices, setVoices] = useState([]);
 
   useEffect(() => {
     const getVideos = async () => {
-      const response = await fetch("http://localhost:5000/api/mimic/videosurl");
+      const response = await fetch(
+        "https://100.100.100.52:5000/api/mimic/videosurl"
+      );
       const responseData = await response.json();
       setVideos(responseData.urls);
     };
@@ -29,7 +30,9 @@ const AvatarOptions = () => {
 
   useEffect(() => {
     const getLanguages = async () => {
-      const response = await fetch("http://localhost:5000/api/tts/languages");
+      const response = await fetch(
+        "https://100.100.100.52:5000/api/tts/languages"
+      );
       const responseData = await response.json();
       setLanguages(responseData.languages);
     };
@@ -39,7 +42,7 @@ const AvatarOptions = () => {
   useEffect(() => {
     const getVoices = async () => {
       const response = await fetch(
-        `http://localhost:5000/api/tts/voices/${options.language}`
+        `https://100.100.100.52:5000/api/tts/voices/${options.language}`
       );
       const responseData = await response.json();
       setVoices(responseData.voices);
@@ -51,15 +54,18 @@ const AvatarOptions = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/tts/synthesis", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        language: options.language,
-        voice: options.voice,
-        text: options["text-content"],
-      }),
-    });
+    const response = await fetch(
+      "https://100.100.100.52:5000/api/tts/synthesis",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          language: options.language,
+          voice: options.voice,
+          text: options["text-content"],
+        }),
+      }
+    );
 
     const responseData = await response.json();
     setAudioUrl(responseData.audio_url);
@@ -112,7 +118,7 @@ const AvatarOptions = () => {
                     src={avatar}
                     width="15%"
                     height="15%"
-                    className="img-thumbnail"
+                    className="img-thumbnail rounded-circle"
                   ></video>
                 </Form.Group>
                 <span> &nbsp;Avatar</span>
@@ -155,7 +161,7 @@ const AvatarOptions = () => {
                 label="HD"
                 checked={options.hd}
                 onChange={(e) => {
-                  setOptions({ ...options, hd: !options.hd });
+                  setHd(!hd);
                 }}
               />
             </Form.Group>

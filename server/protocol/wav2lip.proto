@@ -30,6 +30,12 @@ message Wav2LipRequest {
     string uid = 1;
     string audio_url = 2;
     string name = 3;
+    bytes background_image = 4;
+    bytes watermark_image = 5;
+    string driving_video_url=6;
+    bytes ref_image = 7;
+    bool hd = 8;
+
 }
 
 
@@ -37,6 +43,7 @@ message Wav2LipResponse {
     string uid = 1;
     string audio_url = 2;
     string video_url = 3;
+    string error = 4;
 }
 
 message Wav2LipDeleteRequest {
@@ -67,6 +74,8 @@ message Wav2LipStreamRequest {
     string uid = 1;
     string name = 2;
     bytes audio_contents=3;
+    bytes background_image = 4;
+    bytes watermark_image = 5;
 }
 
 

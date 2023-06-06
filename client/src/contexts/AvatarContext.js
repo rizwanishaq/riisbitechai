@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect, useRef } from "react";
-import { useVideos } from "../hooks/useVideos";
 
 import PCMPlayer from "pcm-player";
 import { downsampleBuffer, getLinear16 } from "../utils/utils";
@@ -7,9 +6,18 @@ import { downsampleBuffer, getLinear16 } from "../utils/utils";
 export const AvatarContext = createContext();
 
 const AvatarContextProvider = ({ children }) => {
-  const { avatar } = useVideos();
+  const [avatar, setAvatar] = useState(
+    "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_another.mp4"
+  );
   const [start, setStart] = useState(false);
   const [error, setError] = useState("");
+  const avatars = [
+    "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_cartoo23323n.mp4",
+    "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_metahuman.mp4",
+    "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_another.mp4",
+    "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_better_one.mp4",
+    "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_Screenshot+from+2023-05-15+16-01-45-0-Enhanced-Animated.mp4",
+  ];
 
   const [responseData, setResponseData] = useState({
     image: null,
@@ -71,7 +79,7 @@ const AvatarContextProvider = ({ children }) => {
   useEffect(() => {
     if (start) {
       setError("");
-      ws.current = new WebSocket("ws://127.0.0.1:5000");
+      ws.current = new WebSocket("wss://100.100.100.52:5000");
       ws.current.onopen = () => {
         getUserMedia();
         player.current = new PCMPlayer({
@@ -128,6 +136,9 @@ const AvatarContextProvider = ({ children }) => {
         responseData,
         setResponseData,
         player,
+        error,
+        avatars,
+        setAvatar,
       }}
     >
       {children}
