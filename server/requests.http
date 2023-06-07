@@ -29,14 +29,28 @@ Content-Type: application/json
 }
 
 
-### Get languages
-POST http://localhost:5000/api/mimic/getAvatar
+
+
+### Post Request
+POST https://100.100.100.52:5000/api/mimic/getAvatar
 Content-Type: application/json
 
 {
    "audio_url": "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/audios/test123.wav",
    "avatar": "https://dialoga-machine-learning.s3.amazonaws.com/mimic/source/AnaBlanco_2.mp4"
 }
+
+
+
+
+### Get languages
+POST https://100.100.100.52:5000/api/mimic/audio/
+Content-Type: application/json
+
+{
+   "audio_url": "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/audios/test123.wav"
+}
+
 
 
 

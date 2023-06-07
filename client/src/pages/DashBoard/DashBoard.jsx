@@ -8,6 +8,7 @@ import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import AvatarOptions from "../../components/Avatar/AvatarOptions";
 import AvatarSelection from "../../components/Avatar/AvatarSelection";
+import AvatarAudio from "../../components/AudioDecoding/AvatarAudio";
 
 const DashBoard = () => {
   const { visits } = useDevice();
@@ -35,16 +36,18 @@ const DashBoard = () => {
         <section className="section dashboard">
           <Row>
             <Col lg={4}>
-              <Card>
-                <AvatarOptions />
-              </Card>
+              <Card>{/* <AvatarOptions /> */}</Card>
             </Col>
             <Col lg={8}>
               <div className="col-12">
-                <AvatarSelection />
+                {/* <AvatarSelection /> */}
+                <AvatarAudio />
               </div>
             </Col>
           </Row>
+          {/* <Row>
+            <AvatarAudio />
+          </Row> */}
         </section>
       </main>
       ;

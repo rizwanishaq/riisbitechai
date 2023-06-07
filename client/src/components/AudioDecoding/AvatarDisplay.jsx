@@ -1,19 +1,20 @@
 import React from "react";
-import { useAvatar } from "../../hooks/useAvatar";
-import { Col, Alert, Card, Form } from "react-bootstrap";
-import Stack from "react-bootstrap/Stack";
-import PlaySound from "./PlaySound";
 
-const RealTimeAvatar = () => {
-  const { start, setStart, responseData, error, avatars, setAvatar, player } =
-    useAvatar();
-  const stopHandler = (e) => {
-    setStart(false);
-  };
+import { Card, Col, Alert, Stack, Form } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import { BsFillSendFill } from "react-icons/bs";
 
-  const startHandler = (e) => {
-    setStart(true);
-  };
+const AvatarDisplay = ({
+  responseData,
+  error,
+  start,
+  startHandler,
+  stopHandler,
+  avatars,
+  setAvatar,
+  handleSubmit,
+  setText,
+}) => {
   return (
     <Col>
       <Card style={{ width: "20rem" }}>
@@ -29,7 +30,26 @@ const RealTimeAvatar = () => {
           />
         </Card.Body>
         <Card.Body>
-          {responseData.audio_contents && <PlaySound player={player} />}
+          <Form className="align-items-center mt-3" onSubmit={handleSubmit}>
+            <Form.Group className="mt-3 mb-3">
+              <Form.Label>Text content</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={7}
+                placeholder="Please enter text content"
+                onChange={(e) => setText(e.target.value)}
+              />
+              <Button
+                className="mt-3 mb-3"
+                type="submit"
+                style={{ display: "flex", justifyContent: "center" }}
+              >
+                <BsFillSendFill size={20} />
+              </Button>
+            </Form.Group>
+          </Form>
+        </Card.Body>
+        <Card.Body>
           {error && <Alert variant="danger">{error}</Alert>}
           <Stack direction="horizontal" gap={3}>
             <Card.Link href="#" onClick={startHandler} disabled={start}>
@@ -56,4 +76,4 @@ const RealTimeAvatar = () => {
   );
 };
 
-export default RealTimeAvatar;
+export default AvatarDisplay;
