@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import PCMPlayer from "pcm-player";
 
-import { Card, Col, Alert, Stack, Form } from "react-bootstrap";
 import { downsampleBuffer, getLinear16 } from "../../utils/utils";
 import AvatarDisplay from "./AvatarDisplay";
 
@@ -71,18 +70,9 @@ const AvatarAudio = () => {
     source.start();
   };
 
-  const getAudioDecoding = async () => {
-    const response = await fetch("https://100.100.100.52:5000/api/mimic/audio");
-
-    const arrayBuffer = await response.arrayBuffer();
-
-    success(arrayBuffer);
-  };
-
   useEffect(() => {
     if (start) {
       ws.current = new WebSocket("wss://100.100.100.52:5000");
-      //   getAudioDecoding();
       ws.current.onopen = () => {
         player.current = new PCMPlayer({
           inputCodec: "Int16",
@@ -206,6 +196,7 @@ const AvatarAudio = () => {
         setAvatar={setAvatar}
         handleSubmit={handleSubmit}
         setText={setText}
+        text={text}
       />
     </>
   );

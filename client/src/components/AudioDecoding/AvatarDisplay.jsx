@@ -8,12 +8,12 @@ const AvatarDisplay = ({
   responseData,
   error,
   start,
-  startHandler,
   stopHandler,
   avatars,
   setAvatar,
   handleSubmit,
   setText,
+  text,
 }) => {
   return (
     <Col>
@@ -37,6 +37,7 @@ const AvatarDisplay = ({
                 as="textarea"
                 rows={7}
                 placeholder="Please enter text content"
+                value={text}
                 onChange={(e) => setText(e.target.value)}
               />
               <Button
@@ -52,9 +53,9 @@ const AvatarDisplay = ({
         <Card.Body>
           {error && <Alert variant="danger">{error}</Alert>}
           <Stack direction="horizontal" gap={3}>
-            <Card.Link href="#" onClick={startHandler} disabled={start}>
+            {/* <Card.Link href="#" onClick={startHandler} disabled={start}>
               <i className="fas fa-play"></i>Start
-            </Card.Link>
+            </Card.Link> */}
             <Card.Link href="#" onClick={stopHandler} disabled={!start}>
               <i className="fas fa-stop-circle"></i>Stop
             </Card.Link>

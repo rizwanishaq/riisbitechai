@@ -38,16 +38,16 @@ const DashBoard = () => {
             <Col lg={4}>
               <Card>{/* <AvatarOptions /> */}</Card>
             </Col>
-            <Col lg={8}>
-              <div className="col-12">
-                {/* <AvatarSelection /> */}
-                <AvatarAudio />
-              </div>
+            <Col lg={4}>
+              {/* <div className="col-12"> */}
+
+              <AvatarSelection />
+            </Col>
+            <Col lg={4}>
+              <AvatarAudio />
+              {/* </div> */}
             </Col>
           </Row>
-          {/* <Row>
-            <AvatarAudio />
-          </Row> */}
         </section>
       </main>
       ;
