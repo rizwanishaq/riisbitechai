@@ -52,6 +52,13 @@ Content-Type: application/json
 }
 
 
+### chatpost
+POST https://100.100.100.52:5000/api/chat/getanswer/
+Content-Type: application/json
+
+{
+   "text": "Have you ever wondered how an animated version of yourself might look? With Stable Diffusion, you don’t need to wonder anymore, instead you can create a Disney Pixar style avatar of yourself using some simple text input. If you are new to Stable Diffusion have a look at this tutorial and explanation"
+}
 
 
 ### Post Request

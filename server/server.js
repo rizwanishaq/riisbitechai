@@ -18,9 +18,9 @@ import connectDB from "./config/db.js";
 import DeviceRoutes from "./routes/deviceRoutes.js";
 import MachinelearningRoutes from "./routes/machinelearningRoutes.js";
 import NewsRoutes from "./routes/newsRoutes.js";
-import ChatGPTRoutes from "./routes/chatGPTRoutes.js";
 import MimicRoutes from "./routes/mimicRoutes.js";
 import TTSRoutes from "./routes/ttsRoutes.js";
+import ChatRoutes from "./routes/chatRoutes.js";
 import processWebSocket from "./mimicServices/mimicServices.js";
 
 // Connecting database
@@ -54,9 +54,9 @@ app.use(
 app.use("/api/device", DeviceRoutes);
 app.use("/api/machinelearning", MachinelearningRoutes);
 app.use("/api/news", NewsRoutes);
-app.use("/api/chatgpt", ChatGPTRoutes);
 app.use("/api/mimic", MimicRoutes);
 app.use("/api/tts", TTSRoutes);
+app.use("/api/chat", ChatRoutes);
 
 // Server started to listen
 const server = https

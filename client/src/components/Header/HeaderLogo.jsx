@@ -16,7 +16,7 @@ const HeaderLogo = () => {
     <div className="d-flex align-items-center justify-content-between">
       <NavLink to="/" className="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="" />
-        <span className="d-none d-lg-block">RiisBiTech</span>
+        <span className="d-none d-lg-block">Utopia.ai</span>
       </NavLink>
       <i
         className="bi bi-list toggle-sidebar-btn"

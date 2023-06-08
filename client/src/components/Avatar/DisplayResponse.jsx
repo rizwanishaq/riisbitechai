@@ -34,17 +34,17 @@ const DisplayResponse = () => {
   }, [audioUrl]);
 
   return (
-    <Col>
-      <Card style={{ width: "25rem" }}>
-        <Card.Body>
-          {processing ? (
-            <img variant="top" src="i/processing.gif" />
-          ) : (
-            <video src={avatarVideo} controls className="mt-3"></video>
-          )}
-        </Card.Body>
-      </Card>
-    </Col>
+    // <Col>
+    // <Card style={{ width: "25rem" }}>
+    <Card.Body>
+      {processing ? (
+        <img variant="top" src="i/processing.gif" />
+      ) : (
+        <video src={avatarVideo} controls className="mt-3"></video>
+      )}
+    </Card.Body>
+    // </Card>
+    // </Col>
   );
 };
 

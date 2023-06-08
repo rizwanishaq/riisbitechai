@@ -27,6 +27,8 @@ const client = new proto.utopia.texttospeech.v1.TextToSpeech(
 const metadata = new grpc.Metadata();
 metadata.add("request_id", "random_id");
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export const listLanguages = () => {
   return new Promise((resolve, reject) => {
     client.ListLanguages({}, metadata, (error, response) => {
@@ -89,8 +91,9 @@ export const SynthesizeSpeech = ({ data, fileName }) => {
       const { audio_content } = chunk;
       fileWriter.write(audio_content);
     });
-    call.on("error", (error) => {
+    call.on("error", async (error) => {
       console.log(error);
+      await delay(100);
       fileWriter.end();
       deleteFile(`${fileName}.wav`);
       reject(error);
@@ -101,6 +104,7 @@ export const SynthesizeSpeech = ({ data, fileName }) => {
     });
 
     call.on("end", async () => {
+      await delay(100);
       fileWriter.end();
       const audio_url = await uploadAudio(`${fileName}.wav`);
       deleteFile(`${fileName}.wav`);

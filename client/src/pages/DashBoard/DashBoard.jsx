@@ -2,13 +2,12 @@ import React from "react";
 import { useDevice } from "../../hooks/useDevice";
 import { MdVisibility } from "react-icons/md";
 import Row from "react-bootstrap/Row";
-import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import AvatarOptions from "../../components/Avatar/AvatarOptions";
-import AvatarSelection from "../../components/Avatar/AvatarSelection";
-import AvatarAudio from "../../components/AudioDecoding/AvatarAudio";
+import AvatarDashBoard from "../../components/TTSAvatar/AvatarDashBoard";
+import RealTimeAvatar from "../../components/Avatar/RealTimeAvatar";
 
 const DashBoard = () => {
   const { visits } = useDevice();
@@ -36,16 +35,13 @@ const DashBoard = () => {
         <section className="section dashboard">
           <Row>
             <Col lg={4}>
-              <Card>{/* <AvatarOptions /> */}</Card>
+              <AvatarOptions />
             </Col>
             <Col lg={4}>
-              {/* <div className="col-12"> */}
-
-              <AvatarSelection />
+              <AvatarDashBoard />
             </Col>
             <Col lg={4}>
-              <AvatarAudio />
-              {/* </div> */}
+              <RealTimeAvatar />
             </Col>
           </Row>
         </section>

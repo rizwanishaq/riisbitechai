@@ -4,7 +4,7 @@ import PCMPlayer from "pcm-player";
 import { downsampleBuffer, getLinear16 } from "../../utils/utils";
 import AvatarDisplay from "./AvatarDisplay";
 
-const AvatarAudio = () => {
+const AvatarDashBoard = () => {
   const [responseData, setResponseData] = useState({
     image: null,
     audio_contents: null,
@@ -29,7 +29,7 @@ const AvatarAudio = () => {
   ];
 
   const [avatar, setAvatar] = useState(
-    "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_cartoo23323n.mp4"
+    "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_another.mp4"
   );
 
   const process_microphone_buffer = async (event) => {
@@ -164,25 +164,27 @@ const AvatarAudio = () => {
     setStart(true);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await fetch(
-      "https://100.100.100.52:5000/api/tts/synthesis",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          language: "en-US",
-          voice: "UTUSF",
-          text: text,
-        }),
-      }
-    );
+  useEffect(() => {
+    const getUrl = async () => {
+      const response = await fetch(
+        "https://100.100.100.52:5000/api/tts/synthesis",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            language: "en-US",
+            voice: "UTUSF",
+            text: text,
+          }),
+        }
+      );
 
-    const responseData = await response.json();
-    setAudio_Url(responseData.audio_url);
-    setText("");
-  };
+      const responseData = await response.json();
+      setAudio_Url(responseData.audio_url);
+      setText("");
+    };
+    if (text !== "") getUrl();
+  }, [text]);
 
   return (
     <>
@@ -194,12 +196,10 @@ const AvatarAudio = () => {
         stopHandler={stopHandler}
         avatars={avatars}
         setAvatar={setAvatar}
-        handleSubmit={handleSubmit}
         setText={setText}
-        text={text}
       />
     </>
   );
 };
 
-export default AvatarAudio;
+export default AvatarDashBoard;

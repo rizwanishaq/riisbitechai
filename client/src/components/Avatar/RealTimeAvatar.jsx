@@ -1,9 +1,9 @@
-import React, { createContext, useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Col, Alert, Card, Form } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
 import PCMPlayer from "pcm-player";
-import PlaySound from "./PlaySound";
 import { downsampleBuffer, getLinear16 } from "../../utils/utils";
+import DisplayResponse from "./DisplayResponse";
 
 const RealTimeAvatar = () => {
   const [avatar, setAvatar] = useState(
@@ -162,7 +162,6 @@ const RealTimeAvatar = () => {
           />
         </Card.Body>
         <Card.Body>
-          {/* {responseData.audio_contents && <PlaySound player={player} />} */}
           {error && <Alert variant="danger">{error}</Alert>}
           <Stack direction="horizontal" gap={3}>
             <Card.Link href="#" onClick={startHandler} disabled={start}>
