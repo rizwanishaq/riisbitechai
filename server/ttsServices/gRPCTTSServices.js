@@ -93,7 +93,7 @@ export const SynthesizeSpeech = ({ data, fileName }) => {
     });
     call.on("error", async (error) => {
       console.log(error);
-      await delay(100);
+      await delay(50);
       fileWriter.end();
       deleteFile(`${fileName}.wav`);
       reject(error);
@@ -104,8 +104,8 @@ export const SynthesizeSpeech = ({ data, fileName }) => {
     });
 
     call.on("end", async () => {
-      await delay(100);
-      fileWriter.end();
+      await delay(50);
+      await fileWriter.end();
       const audio_url = await uploadAudio(`${fileName}.wav`);
       deleteFile(`${fileName}.wav`);
       resolve(audio_url);

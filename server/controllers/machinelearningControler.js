@@ -25,7 +25,7 @@ export const stableDiffusion = asyncHandler(async (req, res) => {
   // await promptImage.create({
   //   device_uid: device_uid,
   //   prompt: prompt,
-  //   image_url: image_url,
+  //   // image_url: image_url,
   // });
 
   res.status(200).json({
