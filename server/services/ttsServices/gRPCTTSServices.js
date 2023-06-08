@@ -1,7 +1,7 @@
 import grpc from "@grpc/grpc-js";
 import wav from "wav";
 
-import { uploadAudio } from "../utils/awsUtils.js";
+import { uploadAudio } from "../../utils/awsUtils.js";
 import { deleteFile } from "./utils.js";
 
 import protoLoader from "@grpc/proto-loader";

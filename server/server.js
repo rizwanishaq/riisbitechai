@@ -21,7 +21,7 @@ import NewsRoutes from "./routes/newsRoutes.js";
 import MimicRoutes from "./routes/mimicRoutes.js";
 import TTSRoutes from "./routes/ttsRoutes.js";
 import ChatRoutes from "./routes/chatRoutes.js";
-import processWebSocket from "./mimicServices/mimicServices.js";
+import processWebSocket from "./services/mimicServices/mimicServices.js";
 
 // Connecting database
 connectDB();

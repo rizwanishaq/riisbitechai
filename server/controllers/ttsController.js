@@ -5,7 +5,7 @@ import {
   listLanguages,
   listVoices,
   SynthesizeSpeech,
-} from "../ttsServices/gRPCTTSServices.js";
+} from "../services/ttsServices/gRPCTTSServices.js";
 
 export const getLanguages = asyncHandler(async (req, res) => {
   const response = await listLanguages();

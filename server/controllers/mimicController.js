@@ -1,6 +1,6 @@
 import asyncHandler from "express-async-handler";
 import { listUrls } from "../utils/awsUtils.js";
-import { generateAvatar } from "../mimicServices/mimicServices.js";
+import { generateAvatar } from "../services/mimicServices/mimicServices.js";
 import path from "path";
 
 import AWS from "aws-sdk";
