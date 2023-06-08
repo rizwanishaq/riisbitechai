@@ -172,8 +172,8 @@ const AvatarDashBoard = () => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            language: "en-US",
-            voice: "UTUSF",
+            language: "es-ES",
+            voice: "UTESF2",
             text: text,
           }),
         }

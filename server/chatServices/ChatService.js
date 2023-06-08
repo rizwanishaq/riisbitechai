@@ -26,8 +26,8 @@ export const sendMessage = (text, uuid) => {
   const request = {
     input_sentence: text,
     user_id: uuid,
-    language: "ES_2_EN",
-    model: "leo".toUpperCase(),
+    language: "EN_2_EN",
+    model: "macri".toUpperCase(),
     mode: "AUDIO", // TODO!!!! segun la app
   };
 
