@@ -1,10 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import PCMPlayer from "pcm-player";
+import { useVideos } from "../../hooks/useVideos";
 
 import { downsampleBuffer, getLinear16 } from "../../utils/utils";
 import AvatarDisplay from "./AvatarDisplay";
 
 const AvatarDashBoard = () => {
+  const { voice, language } = useVideos();
   const [responseData, setResponseData] = useState({
     image: null,
     audio_contents: null,
@@ -23,9 +25,12 @@ const AvatarDashBoard = () => {
   const avatars = [
     "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_cartoo23323n.mp4",
     "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_metahuman.mp4",
+    "https://dialoga-machine-learning.s3.amazonaws.com/mimic/source/monalisa.mp4",
     "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_another.mp4",
     "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_better_one.mp4",
     "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_Screenshot+from+2023-05-15+16-01-45-0-Enhanced-Animated.mp4",
+    "https://dialoga-machine-learning.s3.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_00024-3290188462-0-Enhanced-Animated.mp4",
+    "https://dialoga-machine-learning.s3.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_00053-2365829893-0-Enhanced-Animated.mp4",
   ];
 
   const [avatar, setAvatar] = useState(
@@ -48,10 +53,10 @@ const AvatarDashBoard = () => {
     ws.current.send(bytes);
   };
 
-  const success = async (stream) => {
+  const success = async (arrayBuffer) => {
     audioContext.current = new AudioContext();
 
-    const audioBuffer = await audioContext.current.decodeAudioData(stream);
+    const audioBuffer = await audioContext.current.decodeAudioData(arrayBuffer);
 
     const source = audioContext.current.createBufferSource();
     source.buffer = audioBuffer;
@@ -72,7 +77,7 @@ const AvatarDashBoard = () => {
 
   useEffect(() => {
     if (start) {
-      ws.current = new WebSocket("wss://100.100.100.52:5000");
+      ws.current = new WebSocket("ws://localhost:5000");
       ws.current.onopen = () => {
         player.current = new PCMPlayer({
           inputCodec: "Int16",
@@ -131,16 +136,13 @@ const AvatarDashBoard = () => {
   useEffect(() => {
     if (audio_url !== "") {
       const getAudioDecoding = async () => {
-        const response = await fetch(
-          "https://100.100.100.52:5000/api/mimic/audio",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              audio_url: `${audio_url}`,
-            }),
-          }
-        );
+        const response = await fetch("/api/mimic/audio", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            audio_url: `${audio_url}`,
+          }),
+        });
 
         if (audioContext.current) {
           audioContext.current.close();
@@ -166,18 +168,15 @@ const AvatarDashBoard = () => {
 
   useEffect(() => {
     const getUrl = async () => {
-      const response = await fetch(
-        "https://100.100.100.52:5000/api/tts/synthesis",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            language: "es-ES",
-            voice: "UTESF2",
-            text: text,
-          }),
-        }
-      );
+      const response = await fetch("/api/tts/synthesis", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          language: `${language}`,
+          voice: `${voice}`,
+          text: text,
+        }),
+      });
 
       const responseData = await response.json();
       setAudio_Url(responseData.audio_url);

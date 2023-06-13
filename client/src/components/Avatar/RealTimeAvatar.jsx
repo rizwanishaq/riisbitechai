@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Col, Alert, Card, Form } from "react-bootstrap";
-import Stack from "react-bootstrap/Stack";
+import Card from "react-bootstrap/Card";
 import PCMPlayer from "pcm-player";
 import { downsampleBuffer, getLinear16 } from "../../utils/utils";
-import DisplayResponse from "./DisplayResponse";
+import AvatarSelection from "./AvatarSelection";
+import DisplayAvatar from "./DisplayAvatar";
 
 const RealTimeAvatar = () => {
   const [avatar, setAvatar] = useState(
@@ -80,7 +80,7 @@ const RealTimeAvatar = () => {
   useEffect(() => {
     if (start) {
       setError("");
-      ws.current = new WebSocket("wss://100.100.100.52:5000");
+      ws.current = new WebSocket("ws://localhost:5000");
       ws.current.onopen = () => {
         getUserMedia();
         player.current = new PCMPlayer({
@@ -148,43 +148,17 @@ const RealTimeAvatar = () => {
     setStart(true);
   };
   return (
-    <Col>
-      <Card style={{ width: "20rem" }}>
-        <Card.Body>
-          <Card.Img
-            className="rounded-circle"
-            variant="top"
-            src={
-              responseData.image
-                ? `data:image/jpeg;base64,${responseData.image}`
-                : "i/empty.png"
-            }
-          />
-        </Card.Body>
-        <Card.Body>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Stack direction="horizontal" gap={3}>
-            <Card.Link href="#" onClick={startHandler} disabled={start}>
-              <i className="fas fa-play"></i>Start
-            </Card.Link>
-            <Card.Link href="#" onClick={stopHandler} disabled={!start}>
-              <i className="fas fa-stop-circle"></i>Stop
-            </Card.Link>
-            <Form.Group>
-              <Form.Select onChange={(e) => setAvatar(e.target.value)}>
-                {" "}
-                <option value="">Select avatar</option>
-                {avatars.map((avatar) => (
-                  <option key={avatar} value={avatar}>
-                    <>{avatar.split("/").pop().replace(".mp4", "")}</>
-                  </option>
-                ))}
-              </Form.Select>
-            </Form.Group>
-          </Stack>
-        </Card.Body>
-      </Card>
-    </Col>
+    <Card style={{ width: "20rem" }}>
+      <AvatarSelection
+        error={error}
+        avatars={avatars}
+        start={start}
+        startHandler={startHandler}
+        stopHandler={stopHandler}
+        setAvatar={setAvatar}
+      />
+      <DisplayAvatar responseData={responseData} />
+    </Card>
   );
 };
 

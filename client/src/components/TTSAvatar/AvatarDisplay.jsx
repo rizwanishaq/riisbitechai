@@ -25,16 +25,15 @@ const AvatarDisplay = ({
 
   useEffect(() => {
     const avatarResponse = async () => {
-      const response = await fetch(
-        "https://100.100.100.52:5000/api/chat/getanswer/",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            text: message,
-          }),
-        }
-      );
+      const response = await fetch("/api/chat/getanswer/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: message,
+        }),
+      });
 
       const responseData = await response.json();
 
@@ -67,25 +66,23 @@ const AvatarDisplay = ({
   };
 
   return (
-    <Col>
-      <Card style={{ width: "20rem" }}>
-        <AvatarSelector
-          avatars={avatars}
-          setAvatar={setAvatar}
-          start={start}
-          stopHandler={stopHandler}
-        />
-        {/* Avatar view */}
-        <AvatarView responseData={responseData} />
-        {/* Chat component */}
-        <AvatarChatContainer
-          messages={messages}
-          handleSend={handleSend}
-          typing={typing}
-        />
-        {error && <Alert variant="danger">{error}</Alert>}
-      </Card>
-    </Col>
+    <Card style={{ width: "20rem" }}>
+      <AvatarSelector
+        avatars={avatars}
+        setAvatar={setAvatar}
+        start={start}
+        stopHandler={stopHandler}
+      />
+      {/* Avatar view */}
+      <AvatarView responseData={responseData} />
+      {/* Chat component */}
+      <AvatarChatContainer
+        messages={messages}
+        handleSend={handleSend}
+        typing={typing}
+      />
+      {error && <Alert variant="danger">{error}</Alert>}
+    </Card>
   );
 };
 

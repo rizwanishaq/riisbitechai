@@ -34,21 +34,10 @@ app.use(helmet()); // For security
 app.use(express.json()); // Enable json parsing
 app.use(express.urlencoded({ extended: false }));
 app.use(errorHandler);
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-
-  next();
-});
-app.use(
-  cors({
-    origin: "*",
-    credentials: true,
-  })
-); // Enable all cors request
+const corsOptions = (req, callback) => {
+  callback(null, { origin: true, credentials: true });
+};
+app.use(cors(corsOptions));
 
 // Routes
 app.use("/api/device", DeviceRoutes);
@@ -59,17 +48,21 @@ app.use("/api/tts", TTSRoutes);
 app.use("/api/chat", ChatRoutes);
 
 // Server started to listen
-const server = https
-  .createServer(
-    {
-      key: fs.readFileSync("server.key"),
-      cert: fs.readFileSync("server.cert"),
-    },
-    app
-  )
-  .listen(port, () => {
-    console.log(`CORS-enables server is listening on port ${port}`.green);
-  });
+// const server = https
+//   .createServer(
+//     {
+//       key: fs.readFileSync("server.key"),
+//       cert: fs.readFileSync("server.cert"),
+//     },
+//     app
+//   )
+//   .listen(port, () => {
+//     console.log(`CORS-enables server is listening on port ${port}`.green);
+//   });
+
+const server = app.listen(port, () => {
+  console.log(`CORS-enables server is listening on port ${port}`.green);
+});
 
 // Websocket Server
 const wss = new WebSocketServer({ server: server });

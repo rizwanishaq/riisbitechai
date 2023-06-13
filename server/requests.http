@@ -10,7 +10,7 @@ GET https://riisbitec.onrender.com/api/news
 
 
 ### Get contact
-GET http://localhost:5000/api/mimic/videosurl
+GET http://100.100.100.52:5000/api/mimic/videosurl
 
 ### Get languages
 GET http://localhost:5000/api/tts/languages

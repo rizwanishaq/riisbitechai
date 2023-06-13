@@ -23,30 +23,30 @@ const MachineLearning = () => {
         className={`nav-content collapse ${show ? "show" : ""}`}
         data-bs-parent="#sidebar-nav"
       >
-        <li>
+        {/* <li>
           <Link to="/eventdetection">
             <i className="bi bi-circle"></i>
             <span>Event Detection</span>
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/stable_diffusion">
             <i className="bi bi-circle"></i>
             <span>StableDiffusion</span>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/chatgpt">
             <i className="bi bi-circle"></i>
             <span>ChatGPT Demo</span>
           </Link>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <Link to="/keywordextractor">
             <i className="bi bi-circle"></i>
             <span>Keyword Extractor</span>
           </Link>
-        </li>
+        </li> */}
 
         <li>
           <Link to="/speech2text">

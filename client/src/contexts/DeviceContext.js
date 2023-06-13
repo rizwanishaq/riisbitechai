@@ -40,7 +40,7 @@ const DeviceContextProvider = ({ children }) => {
   useEffect(() => {
     const send_device_information = async () => {
       const response = await axios.post(
-        "https://100.100.100.52:5000/api/device",
+        "/api/device",
         {
           device_info: device_info,
         },

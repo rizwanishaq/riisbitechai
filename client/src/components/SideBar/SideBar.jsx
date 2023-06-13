@@ -19,12 +19,12 @@ const SideBar = () => {
         <Nav.Item>
           <MachineLearning />
         </Nav.Item>
-        <Nav.Item>
+        {/* <Nav.Item>
           <MERN />
         </Nav.Item>
         <Nav.Item>
           <Blogs />
-        </Nav.Item>
+        </Nav.Item> */}
 
         {/* <li className="nav-heading">Pages</li> */}
 

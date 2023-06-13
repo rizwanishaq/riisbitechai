@@ -17,9 +17,7 @@ const TextToImage = () => {
 
   useEffect(() => {
     const get_prompt_image_pairs = async () => {
-      const response = await axios.get(
-        "https://100.100.100.52:5000/api/machinelearning/stable_diffusion"
-      );
+      const response = await axios.get("/api/machinelearning/stable_diffusion");
       setPrompt_Image_Pairs(response.data.prompt_image_pairs);
     };
     get_prompt_image_pairs();
@@ -31,7 +29,7 @@ const TextToImage = () => {
 
     try {
       const response = await axios.post(
-        "https://100.100.100.52:5000/api/machinelearning/stable_diffusion",
+        "/api/machinelearning/stable_diffusion",
         {
           prompt: `${data.prompt}`,
           device_uid: device_info.device_uid,
