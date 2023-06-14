@@ -31,6 +31,7 @@ const AvatarDashBoard = () => {
     "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_Screenshot+from+2023-05-15+16-01-45-0-Enhanced-Animated.mp4",
     "https://dialoga-machine-learning.s3.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_00024-3290188462-0-Enhanced-Animated.mp4",
     "https://dialoga-machine-learning.s3.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_00053-2365829893-0-Enhanced-Animated.mp4",
+    "https://dialoga-machine-learning.s3.amazonaws.com/mimic/videos/eduardo_bravo/eduardo_bravo_IMG_1193.mp4 ",
   ];
 
   const [avatar, setAvatar] = useState(
