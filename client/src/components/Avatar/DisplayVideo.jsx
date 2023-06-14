@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Col, Card } from "react-bootstrap";
-import { useVideos } from "../../hooks/useVideos";
+import { useAvatar } from "../../hooks/useAvatar";
 
 const DisplayVideo = () => {
-  const { avatar, hd } = useVideos();
-  const { audioUrl } = useVideos();
+  const { avatar, hd, audioUrl } = useAvatar();
   const [avatarVideo, setAvatarVideo] = useState("");
   const [processing, setProcesssing] = useState(false);
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Col, Alert } from "react-bootstrap";
+import { Card, Alert } from "react-bootstrap";
 
 import AvatarChatContainer from "./AvatarChatContainer";
 import AvatarView from "./AvatarView";

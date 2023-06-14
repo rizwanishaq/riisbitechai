@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import PCMPlayer from "pcm-player";
-import { useVideos } from "../../hooks/useVideos";
+import { useAvatar } from "../../hooks/useAvatar";
 
 import { downsampleBuffer, getLinear16 } from "../../utils/utils";
 import AvatarDisplay from "./AvatarDisplay";
 
 const AvatarDashBoard = () => {
-  const { voice, language } = useVideos();
+  const { voice, language } = useAvatar();
   const [responseData, setResponseData] = useState({
     image: null,
     audio_contents: null,

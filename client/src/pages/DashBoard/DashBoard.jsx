@@ -1,16 +1,16 @@
 import React from "react";
-import { useDevice } from "../../hooks/useDevice";
-import { MdVisibility } from "react-icons/md";
+// import { useDevice } from "../../hooks/useDevice";
+// import { MdVisibility } from "react-icons/md";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Badge from "react-bootstrap/Badge";
-import Button from "react-bootstrap/Button";
-import AvatarOptions from "../../components/Avatar/AvatarOptions";
+// import Badge from "react-bootstrap/Badge";
+// import Button from "react-bootstrap/Button";
+import AvatarHome from "../../components/Avatar/AvatarHome";
 import AvatarDashBoard from "../../components/TTSAvatar/AvatarDashBoard";
-import RealTimeAvatar from "../../components/Avatar/RealTimeAvatar";
+import RealTimeAvatar from "../../components/MicAvatar/RealTimeAvatar";
 
 const DashBoard = () => {
-  const { visits } = useDevice();
+  // const { visits } = useDevice();
 
   return (
     <>
@@ -18,7 +18,7 @@ const DashBoard = () => {
         <div className="pagetitle">
           <h1>
             Home
-            <Button className="position-relative" variant="light" disabled>
+            {/* <Button className="position-relative" variant="light" disabled>
               <MdVisibility />
               <Badge
                 pill
@@ -28,14 +28,14 @@ const DashBoard = () => {
               >
                 {visits}
               </Badge>
-            </Button>
+            </Button> */}
           </h1>
         </div>
 
         <section className="section dashboard">
           <Row>
             <Col lg={4}>
-              <AvatarOptions />
+              <AvatarHome />
             </Col>
             <Col lg={4}>
               <AvatarDashBoard />

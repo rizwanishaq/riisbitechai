@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
-import { useVideos } from "../../hooks/useVideos";
+import { useAvatar } from "../../hooks/useAvatar";
 import DisplayVideo from "./DisplayVideo";
 import LanguageSelector from "./LanguageSelector";
 import VoiceSelector from "./VoiceSelector";
@@ -9,9 +9,9 @@ import AvatarsList from "./AvatarsList";
 import AvatarText from "./AvatarText";
 import AvatarButtons from "./AvatarButtons";
 
-const AvatarOptions = () => {
+const AvatarHome = () => {
   const { setAvatar, avatar, setAudioUrl, hd, setHd, setLanguage, setVoice } =
-    useVideos();
+    useAvatar();
   const [videos, setVideos] = useState([]);
   const [options, setOptions] = useState({
     language: "",
@@ -102,4 +102,4 @@ const AvatarOptions = () => {
   );
 };
 
-export default AvatarOptions;
+export default AvatarHome;
