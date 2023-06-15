@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import AvatarHome from "../../components/Avatar/AvatarHome";
 import AvatarDashBoard from "../../components/TTSAvatar/AvatarDashBoard";
 import RealTimeAvatar from "../../components/MicAvatar/RealTimeAvatar";
+import SideTalkerHome from "../../components/SadTalkerAvatar/SideTalkerHome";
 
 const DashBoard = () => {
   // const { visits } = useDevice();
@@ -34,13 +35,16 @@ const DashBoard = () => {
 
         <section className="section dashboard">
           <Row>
-            <Col lg={4}>
+            <Col lg={3}>
               <AvatarHome />
             </Col>
-            <Col lg={4}>
+            <Col lg={3}>
+              <SideTalkerHome />
+            </Col>
+            <Col lg={3}>
               <AvatarDashBoard />
             </Col>
-            <Col lg={4}>
+            <Col lg={3}>
               <RealTimeAvatar />
             </Col>
           </Row>

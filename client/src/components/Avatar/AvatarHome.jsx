@@ -72,7 +72,7 @@ const AvatarHome = () => {
   };
 
   return (
-    <Card style={{ width: "25rem" }}>
+    <Card style={{ width: "20rem" }}>
       <Card.Body className="pb-0">
         <Form className="align-items-center mt-2" onSubmit={handleSubmit}>
           {/* Language Selector */}

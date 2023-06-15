@@ -21,6 +21,7 @@ import NewsRoutes from "./routes/newsRoutes.js";
 import MimicRoutes from "./routes/mimicRoutes.js";
 import TTSRoutes from "./routes/ttsRoutes.js";
 import ChatRoutes from "./routes/chatRoutes.js";
+import SadTalkerRoutes from "./routes/sadTalkerRoutes.js";
 import processWebSocket from "./services/mimicServices/mimicServices.js";
 
 // Connecting database
@@ -46,6 +47,7 @@ app.use("/api/news", NewsRoutes);
 app.use("/api/mimic", MimicRoutes);
 app.use("/api/tts", TTSRoutes);
 app.use("/api/chat", ChatRoutes);
+app.use("/api/sadTalker", SadTalkerRoutes);
 
 // Server started to listen
 // const server = https
