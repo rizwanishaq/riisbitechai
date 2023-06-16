@@ -12,6 +12,8 @@ const SideTalkerHome = () => {
   const [avatarimage, setAvatarimage] = useState(null);
   const canvas_ref = useRef(undefined);
   const [audiourl, setAudioUrl] = useState("");
+  const [processing, setProcesssing] = useState(false);
+  const [avatarVideo, setAvatarVideo] = useState("");
 
   const [options, setOptions] = useState({
     "text-content": "",
@@ -19,21 +21,22 @@ const SideTalkerHome = () => {
 
   useEffect(() => {
     const getVideo = async () => {
-      //   setProcesssing(true);
-      const response = await fetch("/api/mimic/getAvatar", {
+      setProcesssing(true);
+      const response = await fetch("/api/sadTalker/getVideo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           audio_url: audiourl,
-          image: image.split(",")[1],
+          image: avatarimage.split(",")[1],
         }),
       });
 
       const responseData = await response.json();
-      //   setAvatarVideo(responseData.response.video_url);
-      //   setProcesssing(false);
+      setAvatarVideo(responseData.video_url);
+      setProcesssing(false);
     };
     if (audiourl != "") {
+      getVideo();
     }
   }, [audiourl]);
 
@@ -55,6 +58,8 @@ const SideTalkerHome = () => {
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
+      setAudioUrl("");
+      setAvatarVideo("");
       setImage(URL.createObjectURL(e.target.files[0]));
     }
   };
@@ -71,7 +76,11 @@ const SideTalkerHome = () => {
   return (
     <Card style={{ width: "20rem" }}>
       <Card.Body>
-        <Card.Img src={image ? image : "i/empty.png"}></Card.Img>
+        {avatarVideo !== "" ? (
+          <video src={avatarVideo} controls className="mt-3"></video>
+        ) : (
+          <Card.Img src={image ? image : "i/empty.png"}></Card.Img>
+        )}
       </Card.Body>
       <Form className="align-items-center mt-2" onSubmit={handleSubmit}>
         <Card.Body>

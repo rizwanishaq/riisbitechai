@@ -32,8 +32,8 @@ const port = process.env.PORT || 5000;
 // Middleware initialized
 app.use(morgan("common")); // Logging
 app.use(helmet()); // For security
-app.use(express.json()); // Enable json parsing
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json({ limit: "50mb" })); // Enable json parsing
+app.use(express.urlencoded({ limit: "50mb", extended: false }));
 app.use(errorHandler);
 const corsOptions = (req, callback) => {
   callback(null, { origin: true, credentials: true });

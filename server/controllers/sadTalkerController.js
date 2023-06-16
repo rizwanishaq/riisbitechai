@@ -6,7 +6,7 @@ export const getSadTalkerVideo = asyncHandler(async (req, res) => {
   const { audio_url, image } = req.body;
 
   const response = await getVideoURL({ audio_url, image });
-  res.status(200).json(response.video_url);
+  res.status(200).json({ video_url: response.video_url });
 });
 
 export default getSadTalkerVideo;
