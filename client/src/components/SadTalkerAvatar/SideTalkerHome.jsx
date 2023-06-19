@@ -21,6 +21,7 @@ const SideTalkerHome = () => {
 
   useEffect(() => {
     const getVideo = async () => {
+      setAvatarVideo("");
       setProcesssing(true);
       const response = await fetch("/api/sadTalker/getVideo", {
         method: "POST",
@@ -122,9 +123,10 @@ const SideTalkerHome = () => {
               className="mb-1 mt-2 ms-auto"
               type="submit"
               style={{ display: "flex", justifyContent: "center" }}
+              disabled={processing}
             >
               <BsFillSendFill size={20} />
-              <span> &nbsp;Generate </span>
+              <span> &nbsp;{processing ? "Processing..." : "Generate"} </span>
             </Button>
           </Stack>
         </Card.Body>
