@@ -18,7 +18,6 @@ const REMOTE_SERVER = "utopiaassistant-test.utopia.ai:443";
 
 const client = new proto.utopia.brain.integrator.v1.Chatbot(
   REMOTE_SERVER,
-  // grpc.credentials.createInsecure()
   grpc.credentials.createSsl()
 );
 

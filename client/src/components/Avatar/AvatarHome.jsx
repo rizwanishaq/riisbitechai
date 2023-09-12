@@ -28,6 +28,7 @@ const AvatarHome = () => {
       setVideos(responseData.urls);
     };
     getVideos();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -37,6 +38,7 @@ const AvatarHome = () => {
       setLanguages(responseData.languages);
     };
     getLanguages();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -53,6 +55,7 @@ const AvatarHome = () => {
   useEffect(() => {
     if (options.voice !== "") setVoice(options.voice);
     if (options.language !== "") setLanguage(options.language);
+    // eslint-disable-next-line
   }, [options]);
 
   const handleSubmit = async (e) => {
@@ -73,6 +76,7 @@ const AvatarHome = () => {
 
   return (
     <Card style={{ width: "20rem" }}>
+      <Card.Title>Offline-videos-lists</Card.Title>
       <Card.Body className="pb-0">
         <Form className="align-items-center mt-2" onSubmit={handleSubmit}>
           {/* Language Selector */}

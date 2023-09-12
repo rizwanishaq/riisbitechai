@@ -1,8 +1,8 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
-import Blogs from "./Blogs";
+// import Blogs from "./Blogs";
 import MachineLearning from "./MachineLearning";
-import MERN from "./MERN";
+// import MERN from "./MERN";
 import { NavLink } from "react-router-dom";
 
 const SideBar = () => {
@@ -21,8 +21,8 @@ const SideBar = () => {
         </Nav.Item>
         {/* <Nav.Item>
           <MERN />
-        </Nav.Item>
-        <Nav.Item>
+        </Nav.Item> */}
+        {/* <Nav.Item> 
           <Blogs />
         </Nav.Item> */}
 

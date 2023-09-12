@@ -17,7 +17,7 @@ const proto = grpc.loadPackageDefinition(
 );
 
 // Setting up the grpc server credentials
-const REMOTE_SERVER = "172.26.161.45:60055";
+const REMOTE_SERVER = "172.26.161.12:60055";
 
 const client = new proto.utopia.texttospeech.v1.TextToSpeech(
   REMOTE_SERVER,

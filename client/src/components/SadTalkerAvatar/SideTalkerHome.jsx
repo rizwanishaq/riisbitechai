@@ -36,9 +36,10 @@ const SideTalkerHome = () => {
       setAvatarVideo(responseData.video_url);
       setProcesssing(false);
     };
-    if (audiourl != "") {
+    if (audiourl !== "") {
       getVideo();
     }
+    // eslint-disable-next-line
   }, [audiourl]);
 
   const handleSubmit = async (e) => {
@@ -76,6 +77,7 @@ const SideTalkerHome = () => {
 
   return (
     <Card style={{ width: "20rem" }}>
+      <Card.Title>Offline-image</Card.Title>
       <Card.Body>
         {avatarVideo !== "" ? (
           <video src={avatarVideo} controls className="mt-3"></video>

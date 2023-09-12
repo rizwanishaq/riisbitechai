@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { useAvatar } from "../../hooks/useAvatar";
 
 const DisplayVideo = () => {
@@ -27,12 +27,13 @@ const DisplayVideo = () => {
     if (audioUrl !== "") {
       getVideo();
     }
+    // eslint-disable-next-line
   }, [audioUrl]);
 
   return (
     <Card.Body>
       {processing ? (
-        <img variant="top" src="i/processing.gif" />
+        <img variant="top" src="i/processing.gif" alt="processing" />
       ) : (
         <video src={avatarVideo} controls className="mt-3"></video>
       )}

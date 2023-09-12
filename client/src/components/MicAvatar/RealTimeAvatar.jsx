@@ -80,7 +80,7 @@ const RealTimeAvatar = () => {
   useEffect(() => {
     if (start) {
       setError("");
-      ws.current = new WebSocket("ws://localhost:5000");
+      ws.current = new WebSocket("wss://devavatar.utopia.ai/ws");
       ws.current.onopen = () => {
         getUserMedia();
         player.current = new PCMPlayer({
@@ -110,8 +110,8 @@ const RealTimeAvatar = () => {
         });
       };
       ws.current.onerror = (e) => {
-        console.log("stream close due to error");
-        setError(e.message);
+        console.log(`stream close due to error : ${JSON.stringify(e)}`);
+
         setStart(false);
         player.current.destroy();
         ws.current.close();
@@ -149,6 +149,7 @@ const RealTimeAvatar = () => {
   };
   return (
     <Card style={{ width: "20rem" }}>
+      <Card.Title>RealTime-Mic</Card.Title>
       <AvatarSelection
         error={error}
         avatars={avatars}

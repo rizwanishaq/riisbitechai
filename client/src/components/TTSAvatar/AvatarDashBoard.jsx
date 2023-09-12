@@ -78,7 +78,7 @@ const AvatarDashBoard = () => {
 
   useEffect(() => {
     if (start) {
-      ws.current = new WebSocket("ws://localhost:5000");
+      ws.current = new WebSocket("wss://devavatar.utopia.ai/ws");
       ws.current.onopen = () => {
         player.current = new PCMPlayer({
           inputCodec: "Int16",

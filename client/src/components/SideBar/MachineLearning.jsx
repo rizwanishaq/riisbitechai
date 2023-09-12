@@ -36,6 +36,12 @@ const MachineLearning = () => {
           </Link>
         </li>
         {/* <li>
+          <Link to="/avatar_demo">
+            <i className="bi bi-circle"></i>
+            <span>Avatar Demo</span>
+          </Link>
+        </li> */}
+        {/* <li>
           <Link to="/chatgpt">
             <i className="bi bi-circle"></i>
             <span>ChatGPT Demo</span>

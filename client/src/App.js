@@ -15,6 +15,7 @@ import TextToImage from "./pages/MachineLearning/HuggingFace/TextToImage";
 import ChatGPT from "./pages/MachineLearning/ChatGPT/ChatGPT";
 import KeywordExtractor from "./pages/MachineLearning/KeywordExtractor/KeywordExtractor";
 import Speech2Text from "./pages/MachineLearning/Speech2Text/Speech2Text";
+import AvatarHome from "./pages/MachineLearning/AvatarHome/AvatarHome";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,11 @@ const router = createBrowserRouter([
       {
         path: "/chatgpt",
         element: <ChatGPT />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/avatar_demo",
+        element: <AvatarHome />,
         errorElement: <Error />,
       },
       {

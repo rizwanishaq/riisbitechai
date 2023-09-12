@@ -67,6 +67,7 @@ const AvatarDisplay = ({
 
   return (
     <Card style={{ width: "20rem" }}>
+      <Card.Title>RealTime-TTS</Card.Title>
       <AvatarSelector
         avatars={avatars}
         setAvatar={setAvatar}

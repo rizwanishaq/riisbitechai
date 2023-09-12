@@ -10,16 +10,16 @@ GET https://riisbitec.onrender.com/api/news
 
 
 ### Get contact
-GET http://100.100.100.52:5000/api/mimic/videosurl
+GET https://devavatar.utopia.ai/api/mimic/videosurl
 
 ### Get languages
-GET http://localhost:5000/api/tts/languages
+GET https://devavatar.utopia.ai/api/tts/languages
 
 ### Get languages
-GET http://localhost:5000/api/tts/voices/en-US
+GET https://devavatar.utopia.ai/api/tts/voices/en-US
 
 ### Get languages
-POST http://localhost:5000/api/tts/synthesis
+POST https://devavatar.utopia.ai/api/tts/synthesis
 Content-Type: application/json
 
 {
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 
 ### Get languages
-POST http://localhost:5000/api/sadTalker/getVideo
+POST https://devavatar.utopia.ai/api/sadTalker/getVideo
 Content-Type: application/json
 
 {
@@ -42,7 +42,7 @@ Content-Type: application/json
 
 
 ### Post Request
-POST https://100.100.100.52:5000/api/mimic/getAvatar
+POST https://devavatar.utopia.ai/api/mimic/getAvatar
 Content-Type: application/json
 
 {
@@ -54,7 +54,7 @@ Content-Type: application/json
 
 
 ### Get languages
-POST https://100.100.100.52:5000/api/mimic/audio/
+POST https://devavatar.utopia.ai/api/mimic/audio/
 Content-Type: application/json
 
 {
@@ -63,7 +63,7 @@ Content-Type: application/json
 
 
 ### chatpost
-POST https://100.100.100.52:5000/api/chat/getanswer/
+POST https://devavatar.utopia.ai/api/chat/getanswer/
 Content-Type: application/json
 
 {
@@ -72,10 +72,10 @@ Content-Type: application/json
 
 
 ### Post Request
-GET https://riisbitec.onrender.com/api/machinelearning/stable_diffusion
+GET https://devavatar.utopia.ai/api/machinelearning/stable_diffusion
 
 ### Register User
-POST https://riisbitec.onrender.com/api/machinelearning/stable_diffusion
+POST https://devavatar.utopia.ai/api/machinelearning/stable_diffusion
 Content-Type: application/json
 
 {
@@ -83,7 +83,7 @@ Content-Type: application/json
 }
 
 ### Register User
-POST https://riisbitec.onrender.com/api/machinelearning//keywordextractor
+POST https://devavatar.utopia.ai/api/machinelearning//keywordextractor
 Content-Type: application/json
 
 {
@@ -91,20 +91,11 @@ Content-Type: application/json
 }
 
 
-### chatgpt request
-POST http://localhost:5000/api/chatgpt
+### Get Audio
+POST http://localhost:3000/api/mimic/getAudio/
 Content-Type: application/json
 
 {
-   "text": "updated goal"
+   "audio_url": "https://dialoga-machine-learning.s3.eu-west-1.amazonaws.com/mimic/audios/test123.wav"
 }
 
-
-### loginuser
-POST http://localhost:5000/api/users/login
-Content-Type: application/json
-
-{
-   "email": "whatever@gmail.com",
-   "password": "1234567"
-}
